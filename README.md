@@ -33,4 +33,4 @@ Descripción de las carpetas contenidas:
 - backend: estará todo lo relacionado al backend del proyecto como lo es el tema de las API, base de datos, etc.
   - querys: se encuentra el query de la creación de las tablas de la base de datos.
   - src/routes: se encuentra las rutas de  los endpoints de la API.
-- frontend: estará todo lo relacionado al diseño.
+- frontend: estará todo lo relacionado al diseño y páginas.
