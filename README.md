@@ -18,10 +18,11 @@ Descripción de las carpetas contenidas:
 - frontend: estará todo lo relacionado al diseño y las páginas.
 
 - El arbol de carpetas tiene la siguiente estructura:
-- Progra_Web2/
+```Progra_Web2/
 ├── backend/
 │   ├── querys/
 │   └── src/
 │       └── routes/
 ├── frontend/
 └── README.md
+```
