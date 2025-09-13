@@ -1,7 +1,7 @@
 Integrantes del equipo:
-DANIEL GIOVANNI CARRILLO BRIONES 2014405
-GABRIEL ALONSO SANABRIA CERVANTES 1863450
-EDUARDO MARTÍNEZ TREVIÑO 1804305
+DANIEL GIOVANNI CARRILLO BRIONES 2014405  
+GABRIEL ALONSO SANABRIA CERVANTES 1863450  
+EDUARDO MARTÍNEZ TREVIÑO 1804305  
 
 Descripción de la aplicación:
 Sitio web que permite a los usuarios registrarse e iniciar sesión para acceder a una experiencia personalizada conn temática del Mundial 2026. El sitio web proporcionará información detallada sobre equipos, jugadores, estadios, partidos y permitirá a los usuarios: 
@@ -16,3 +16,12 @@ Descripción de las carpetas contenidas:
   - querys: se encuentra el query de la creación de las tablas de la base de datos.
   - src/routes: se encuentra las rutas de  los endpoints de la API.
 - frontend: estará todo lo relacionado al diseño y las páginas.
+
+- El arbol de carpetas tiene la siguiente estructura:
+- Progra_Web2/
+├── backend/
+│   ├── querys/
+│   └── src/
+│       └── routes/
+├── frontend/
+└── README.md
