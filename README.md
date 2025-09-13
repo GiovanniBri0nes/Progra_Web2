@@ -11,8 +11,8 @@ Desarrollar un sitio web que permita a los usuarios registrarse e iniciar sesió
 - Editar perfil: Podrá modificar la contraseña, así como su equipo y estadio favorito y poder darse de baja.
 - Experimentar AR: Acceder a una experiencia AR que permita escanear banderas o escudos de las selecciones, mostrando información como participaciones en anteriores mundiales o platillos típicos.
 
-Descripción de las carpetas  contenidas:
--backend: estará todo lo relacionado al backend del proyecto como lo es el tema de las API, base de datos, etc.
+Descripción de las carpetas contenidas:
+- backend: estará todo lo relacionado al backend del proyecto como lo es el tema de las API, base de datos, etc.
   - querys: se encuentra el query de la creación de las tablas de la base de datos.
   - src/routes: se encuentra las rutas de  los endpoints de la API.
--frontedn: estará todo lo relacionado al diseño.
+- frontend: estará todo lo relacionado al diseño.
