@@ -11,6 +11,9 @@ Sitio web que permite a los usuarios registrarse e iniciar sesión para acceder 
 - Editar perfil: Podrá modificar la contraseña, así como su equipo y estadio favorito y poder darse de baja.
 - Experimentar AR: Acceder a una experiencia AR que permita escanear banderas o escudos de las selecciones, mostrando información como participaciones en anteriores mundiales o platillos típicos.
 
+**Tecnologías escogidas**  
+- Node.js para backend, Sequelize como ORM, MySQL para base de datos y bootstrap para frontend.
+
 **Descripción de las carpetas contenidas:**
 - backend: estará todo lo relacionado al backend del proyecto como lo es el tema de las API, base de datos, etc.
   - querys: se encuentra el query de la creación de las tablas de la base de datos.
