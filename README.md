@@ -12,10 +12,10 @@ Sitio web que permite a los usuarios registrarse e iniciar sesión para acceder 
 - Experimentar AR: Acceder a una experiencia AR que permita escanear banderas o escudos de las selecciones, mostrando información como participaciones en anteriores mundiales o platillos típicos.
 
 **Tecnologías escogidas:**  
-- bootstrap para frontend
-- Node.js para backend
-- Sequelize como ORM
-- MySQL para base de datos
+- Frontend: Bootstrap
+- Backend: Node.js
+- ORM: Sequelize
+- Base de datos: MySQL
 
 **Descripción de las carpetas contenidas:**
 - backend: estará todo lo relacionado al backend del proyecto como lo es el tema de las API, base de datos, etc.
