@@ -14,8 +14,8 @@ Sitio web que permite a los usuarios registrarse e iniciar sesión para acceder 
 **Tecnologías escogidas:**  
 - Frontend: Bootstrap
 - Backend: Node.js
-- ORM: Sequelize
-- Base de datos: MySQL
+- ODM: Mongoose
+- Base de datos: MongoDB
 
 **Descripción de las carpetas contenidas:**
 - backend: estará todo lo relacionado al backend del proyecto como lo es el tema de las API, base de datos, etc.
