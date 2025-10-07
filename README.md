@@ -19,16 +19,60 @@ Sitio web que permite a los usuarios registrarse e iniciar sesión para acceder 
 
 **Descripción de las carpetas contenidas:**
 - backend: estará todo lo relacionado al backend del proyecto como lo es el tema de las API, base de datos, etc.
-  - bd: se encuentra el script de la estructura de los objetos de la base de datos.
-  - src/routes: se encuentra las rutas de  los endpoints de la API.
+  - bd: se encuentra el script de conexión con la base de datos de MongoDB y el script de la estructura de los objetos de la base de datos.
+  - routes: se encuentra las rutas de los endpoints de la API.
 - frontend: estará todo lo relacionado al diseño y las páginas.
 
 **Árbol de carpetas:**
 ```Progra_Web2/
 ├── backend/
 │   ├── bd/
-│   └── src/
-│       └── routes/
+│   └── routes/
 ├── frontend/
 └── README.md
 ```
+
+---
+
+## Requisitos para correr el proyecto
+
+1. **Node.js** (versión 14 o superior)
+2. **MongoDB con MongoDB Compass** (versión 4 o superior)
+
+---
+
+## Instalación
+
+### 1. Clonar el repositorio
+```bash
+git clone https://github.com/GiovanniBri0nes/Progra_Web2.git
+cd Progra_Web2
+```
+
+### 2. Instalar librerías y paquetes necesarios (Express, Mongoose, CORS)
+```bash
+cd backend
+npm install
+```
+
+### 3. Configurar MongoDB
+- Abre MongoDB Compass y asegúrate de que MongoDB esté corriendo
+- Ejecuta el script de objetos para crear la base de datos `PW2` y sus colecciones:
+```powershell
+cd backend
+Get-Content bd/Objetos.js | mongosh
+```
+
+### 4. Iniciar el backend
+```bash
+node index.js
+```
+
+## Verificar funcionamiento del backend
+- Abre tu navegador en: http://localhost:3000
+- Debería verse: `{"mensaje":"API funcionando"}`
+
+### 5. Iniciar el frontend
+Abre `frontend/index.html` en tu navegador
+
+---
