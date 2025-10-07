@@ -46,7 +46,6 @@ Sitio web que permite a los usuarios registrarse e iniciar sesión para acceder 
 ### 1. Clonar el repositorio
 ```bash
 git clone https://github.com/GiovanniBri0nes/Progra_Web2.git
-cd Progra_Web2
 ```
 
 ### 2. Instalar librerías y paquetes necesarios (Express, Mongoose, CORS)
@@ -65,6 +64,7 @@ Get-Content bd/Objetos.js | mongosh
 
 ### 4. Iniciar el backend
 ```bash
+cd backend
 node index.js
 ```
 
