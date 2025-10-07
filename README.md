@@ -70,7 +70,7 @@ node index.js
 
 ## Verificar funcionamiento del backend
 - Abre tu navegador en: http://localhost:3000
-- Debería verse: `{"mensaje":"API funcionando"}`
+- Debería verse: `{"mensaje":"API del proyecto de progra web 2 funcionando"}`
 
 ### 5. Iniciar el frontend
 Abre `frontend/index.html` en tu navegador
