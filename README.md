@@ -25,8 +25,7 @@ Sitio web que permite a los usuarios registrarse e iniciar sesión para acceder 
 - frontend: estará todo lo relacionado al diseño y las páginas.
   - css: contiene los estilos personalizados del proyecto.
   - js: contiene el código JavaScript del frontend.
-  - lib: contiene las librerías utilizadas en el proyecto por la parte del frontend.
-    - bootstrap-5.3.3-dist: framework de bootstrap con sus archivos CSS y JavaScript.
+  - lib: contiene las librerías utilizadas en el proyecto para la parte del frontend.
 
 **Árbol de carpetas:**
 ```
@@ -39,7 +38,6 @@ Progra_Web2/
     ├── css/
     ├── js/
     └── lib/
-        └── bootstrap-5.3.3-dist/
 ```
 
 ---
