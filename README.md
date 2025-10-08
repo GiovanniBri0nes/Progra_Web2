@@ -19,17 +19,27 @@ Sitio web que permite a los usuarios registrarse e iniciar sesión para acceder 
 
 **Descripción de las carpetas contenidas:**
 - backend: estará todo lo relacionado al backend del proyecto como lo es el tema de las API, base de datos, etc.
-  - bd: se encuentra el script de conexión con la base de datos de MongoDB y el script de la estructura de los objetos de la base de datos.
+  - node_modules: contiene todas las dependencias de Node.js instaladas (Express, Mongoose, CORS, etc.).
+  - bd: se encuentra el script de conexión con la base de datos de MongoDB, el script de creación de las colecciones en la base de datos y el archivo de modelos de datos de mongoose para cada entidad.
   - routes: se encuentra las rutas de los endpoints de la API.
 - frontend: estará todo lo relacionado al diseño y las páginas.
+  - css: contiene los estilos personalizados del proyecto.
+  - js: contiene el código JavaScript del frontend.
+  - lib: contiene las librerías utilizadas en el proyecto por la parte del frontend.
+    - bootstrap-5.3.3-dist: framework de bootstrap con sus archivos CSS y JavaScript.
 
 **Árbol de carpetas:**
-```Progra_Web2/
+```
+Progra_Web2/
 ├── backend/
+│   ├── node_modules/
 │   ├── bd/
 │   └── routes/
-├── frontend/
-└── README.md
+└── frontend/
+    ├── css/
+    ├── js/
+    └── lib/
+        └── bootstrap-5.3.3-dist/
 ```
 
 ---
