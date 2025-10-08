@@ -56,10 +56,10 @@ npm install
 
 ### 3. Configurar MongoDB
 - Abre MongoDB Compass y asegúrate de que MongoDB esté corriendo
-- Ejecuta el script de objetos para crear la base de datos `PW2` y sus colecciones:
+- Ejecuta el script de colecciones para crear la base de datos `PW2` y sus colecciones:
 ```powershell
 cd backend
-Get-Content bd/Objetos.js | mongosh
+Get-Content bd/Colecciones.js | mongosh
 ```
 
 ### 4. Iniciar el backend
