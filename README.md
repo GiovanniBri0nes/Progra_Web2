@@ -1,3 +1,5 @@
+# Mundial 2026 - Programación Web 2
+
 **Integrantes del equipo:**  
 DANIEL GIOVANNI CARRILLO BRIONES 2014405  
 GABRIEL ALONSO SANABRIA CERVANTES 1863450  
