@@ -1,3 +1,4 @@
+// Importar dependencias
 const cors = require('cors');
 const express = require('express');
 const conectarseConBD = require('./bd/ConexionBD');
@@ -13,7 +14,7 @@ const rutasUsuarios = require('./routes/usuarios.routes');
 
 const app = express();
 
-// Conectar a MongoDB
+// Conectarse a MongoDB
 conectarseConBD();
 
 // Middlewares
