@@ -15,7 +15,7 @@ Sitio web que permite a los usuarios registrarse e iniciar sesión para acceder 
 
 **Tecnologías escogidas:**  
 - Frontend: Bootstrap
-- Backend: Node.js
+- Backend: Node.js + Express
 - ODM: Mongoose
 - Base de datos: MongoDB
 
