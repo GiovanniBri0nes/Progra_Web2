@@ -1,0 +1,86 @@
+/* Estilos generales */
+body {
+    background: linear-gradient(135deg, #59a9ff 0%, #fffb86 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+}
+
+/* Tarjeta de registro */
+.signup-card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Estilos de formulario */
+.form-control:focus,
+.form-select:focus {
+    border-color: #59a9ff;
+    box-shadow: 0 0 0 0.25rem rgba(89, 169, 255, 0.25);
+}
+
+.form-control,
+.form-select {
+    padding: 0.75rem 1rem;
+}
+
+/* Botón de registro */
+.btn-primary {
+    background: linear-gradient(135deg, #59a9ffb7 0%, #fffb86a4 100%);
+    border: none;
+    padding: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(89, 169, 255, 0.4);
+    background: linear-gradient(135deg, #59a9ffb7 0%, #fffb86a4 100%);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Enlaces */
+a {
+    color: #2e86de;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #0c56a0;
+}
+
+/* Animación de la tarjeta */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Validación visual */
+.form-control.is-valid {
+    border-color: #28a745;
+}
+
+.form-control.is-invalid {
+    border-color: #dc3545;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .card-body {
+        padding: 2rem !important;
+    }
+}
+
+

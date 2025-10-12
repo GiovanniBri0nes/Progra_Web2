@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Mundial 2026</title>
+    
+    <!-- Bootstrap 5.3.3 CSS -->
+    <link rel="stylesheet" href="lib/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+
+    <!-- Estilos CSS personalizados -->
+    <link rel="stylesheet" href="css/dashboard.css">
+
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="dashboard.html">
+                <span class="fs-4">Mundial 2026</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="dashboard.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="selecciones.html">Selecciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="estadios.html">Estadios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="partidos.html">Partidos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="perfil.html">Editar Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="experiencia.html">Experiencia AR</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link logout" href="#" id="logoutBtn">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Wrapper -->
+    <main class="main-content">
+        <!-- Contenido Principal -->
+        <div class="container mt-5 mb-5">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Bienvenida -->
+                    <div class="welcome-section text-center mb-5">
+                        <h1 class="display-4 mb-3">¡Bienvenido al Mundial 2026!</h1>
+                        <p class="lead text-muted" id="welcomeMessage">Cargando...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer py-4 bg-light mt-auto">
+        <div class="container text-center">
+            <p class="text-muted mb-0">Mundial 2026 - Programación Web 2</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5.3.3 JS -->
+    <script src="lib/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script JS personalizado -->
+    <script src="js/dashboard.js"></script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadios - Mundial 2026</title>
+    <link rel="stylesheet" href="lib/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="dashboard.html">
+                <span class="fs-4">Mundial 2026</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="selecciones.html">Selecciones</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="estadios.html">Estadios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="partidos.html">Partidos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="perfil.html">Editar Perfil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="experiencia.html">Experiencia AR</a></li>
+                    <li class="nav-item"><a class="nav-link logout" href="#" id="logoutBtn">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="display-4 mb-4 text-center">Estadios</h1>
+        <p class="lead text-center text-muted mb-5">Descubre los estadios sede del Mundial 2026</p>
+        
+        <!-- Grid de Estadios -->
+        <div class="row g-4">
+            <!-- Estadio 1 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card stadium-card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title mb-3">Estadio Azteca</h3>
+                        <div class="stadium-info">
+                            <p class="mb-2"><strong>País:</strong> <span class="badge bg-success">🇲🇽 México</span></p>
+                            <p class="mb-2"><strong>Ciudad:</strong> Ciudad de México</p>
+                            <p class="mb-2"><strong>Capacidad:</strong> <span class="capacity-badge">87,523 personas</span></p>
+                        </div>
+                        <hr>
+                        <div class="d-grid">
+                            <button class="btn btn-alt">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estadio 2 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card stadium-card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title mb-3">MetLife Stadium</h3>
+                        <div class="stadium-info">
+                            <p class="mb-2"><strong>País:</strong> <span class="badge bg-primary">🇺🇸 Estados Unidos</span></p>
+                            <p class="mb-2"><strong>Ciudad:</strong> East Rutherford, NJ</p>
+                            <p class="mb-2"><strong>Capacidad:</strong> <span class="capacity-badge">82,500 personas</span></p>
+                        </div>
+                        <hr>
+                        <div class="d-grid">
+                            <button class="btn btn-alt">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estadio 3 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card stadium-card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title mb-3">SoFi Stadium</h3>
+                        <div class="stadium-info">
+                            <p class="mb-2"><strong>País:</strong> <span class="badge bg-primary">🇺🇸 Estados Unidos</span></p>
+                            <p class="mb-2"><strong>Ciudad:</strong> Inglewood, CA</p>
+                            <p class="mb-2"><strong>Capacidad:</strong> <span class="capacity-badge">70,240 personas</span></p>
+                        </div>
+                        <hr>
+                        <div class="d-grid">
+                            <button class="btn btn-alt">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estadio 4 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card stadium-card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title mb-3">AT&T Stadium</h3>
+                        <div class="stadium-info">
+                            <p class="mb-2"><strong>País:</strong> <span class="badge bg-primary">🇺🇸 Estados Unidos</span></p>
+                            <p class="mb-2"><strong>Ciudad:</strong> Arlington, TX</p>
+                            <p class="mb-2"><strong>Capacidad:</strong> <span class="capacity-badge">80,000 personas</span></p>
+                        </div>
+                        <hr>
+                        <div class="d-grid">
+                            <button class="btn btn-alt">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estadio 5 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card stadium-card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title mb-3">BC Place</h3>
+                        <div class="stadium-info">
+                            <p class="mb-2"><strong>País:</strong> <span class="badge bg-danger">🇨🇦 Canadá</span></p>
+                            <p class="mb-2"><strong>Ciudad:</strong> Vancouver, BC</p>
+                            <p class="mb-2"><strong>Capacidad:</strong> <span class="capacity-badge">54,500 personas</span></p>
+                        </div>
+                        <hr>
+                        <div class="d-grid">
+                            <button class="btn btn-alt">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estadio 6 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card stadium-card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title mb-3">Mercedes-Benz Stadium</h3>
+                        <div class="stadium-info">
+                            <p class="mb-2"><strong>País:</strong> <span class="badge bg-primary">🇺🇸 Estados Unidos</span></p>
+                            <p class="mb-2"><strong>Ciudad:</strong> Atlanta, GA</p>
+                            <p class="mb-2"><strong>Capacidad:</strong> <span class="capacity-badge">71,000 personas</span></p>
+                        </div>
+                        <hr>
+                        <div class="d-grid">
+                            <button class="btn btn-alt">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="lib/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Mundial 2026</title>
+    
+    <!-- Bootstrap 5.3.3 CSS -->
+    <link rel="stylesheet" href="lib/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+
+    <!-- Estilos CSS personalizados -->
+    <link rel="stylesheet" href="css/signup.css">
+
+</head>
+<body>
+
+    <!-- Contenedor principal -->
+    <div class="container">
+        <div class="row min-vh-100 align-items-center justify-content-center py-4">
+            <div class="col-md-6 col-lg-5">
+                
+                <!-- Tarjeta de Registro -->
+                <div class="card shadow-lg signup-card">
+                    <div class="card-body p-5">
+                        
+                        <!-- Header -->
+                        <div class="text-center mb-4">
+                            <h1 class="h2 text-primary mb-2">Mundial 2026</h1>
+                            <p class="text-muted">Crea tu cuenta</p>
+                        </div>
+
+                        <!-- Alert para mensajes -->
+                        <div id="alertContainer"></div>
+
+                        <!-- Formulario de Registro -->
+                        <form id="signupForm">
+                            
+                            <!-- Nombre completo -->
+                            <div class="mb-3">
+                                <label for="fullName" class="form-label">Nombre completo</label>
+                                <input type="text" class="form-control" id="fullName" placeholder="Juan Pérez"requiredminlength="3">
+                            </div>
+
+                            <!-- Email -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Correo electrónico</label>
+                                <input type="email" class="form-control" id="email" placeholder="usuario@ejemplo.com"required>
+                            </div>
+
+                            <!-- Contraseña -->
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="password" placeholder="Mínimo 8 caracteres"requiredminlength="8">
+                                <div class="form-text">
+                                    Debe tener al menos 8 caracteres
+                                </div>
+                            </div>
+
+                            <!-- Confirmar Contraseña -->
+                            <div class="mb-3">
+                                <label for="confirmPassword" class="form-label">Confirmar contraseña</label>
+                                <input type="password" class="form-control" id="confirmPassword" placeholder="Repite tu contraseña"requiredminlength="8">
+                            </div>
+
+                            <!-- País/Región (opcional) -->
+                            <div class="mb-3">
+                                <label for="country" class="form-label">País</label>
+                                <select class="form-select" id="country">
+                                    <option value="">Selecciona tu país</option>
+                                    <option value="AR">Argentina</option>
+                                    <option value="BR">Brasil</option>
+                                    <option value="CL">Chile</option>
+                                    <option value="CO">Colombia</option>
+                                    <option value="CR">Costa Rica</option>
+                                    <option value="EC">Ecuador</option>
+                                    <option value="SV">El Salvador</option>
+                                    <option value="ES">España</option>
+                                    <option value="US">Estados Unidos</option>
+                                    <option value="GT">Guatemala</option>
+                                    <option value="HN">Honduras</option>
+                                    <option value="MX">México</option>
+                                    <option value="NI">Nicaragua</option>
+                                    <option value="PA">Panamá</option>
+                                    <option value="PY">Paraguay</option>
+                                    <option value="PE">Perú</option>
+                                    <option value="UY">Uruguay</option>
+                                    <option value="VE">Venezuela</option>
+                                    <option value="OTHER">Otro</option>
+                                </select>
+                            </div>
+
+                            <!-- Botón de Registro -->
+                            <button type="submit" class="btn btn-primary btn-lg w-100 mb-3" id="signupBtn">
+                                <span id="signupBtnText">Crear cuenta</span>
+                                <span id="signupBtnSpinner" class="spinner-border spinner-border-sm d-none" role="status">
+                                    <span class="visually-hidden">Cargando...</span>
+                                </span>
+                            </button>
+
+                        </form>
+
+                        <!-- Login -->
+                        <hr class="my-4">
+                        <div class="text-center">
+                            <p class="mb-0">¿Ya tienes cuenta? <a href="login.html" class="text-decoration-none">Inicia sesión aquí</a></p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3.3 JS -->
+    <script src="lib/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script JS personalizado -->
+    <script src="js/signup.js"></script>
+
+</body>
+</html>
+
+

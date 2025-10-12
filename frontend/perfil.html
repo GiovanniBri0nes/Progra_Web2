@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - Mundial 2026</title>
+    <link rel="stylesheet" href="lib/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="dashboard.html">
+                <span class="fs-4">Mundial 2026</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="selecciones.html">Selecciones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="estadios.html">Estadios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="partidos.html">Partidos</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="perfil.html">Editar Perfil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="experiencia.html">Experiencia AR</a></li>
+                    <li class="nav-item"><a class="nav-link logout" href="#" id="logoutBtn">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <!-- Tarjeta de Perfil -->
+                <div class="card profile-card">
+                    <div class="card-body p-4">
+                        <!-- Header del Perfil -->
+                        <div class="text-center mb-4">
+                            <div class="profile-avatar mb-3">
+                                <span class="avatar-text">👤</span>
+                            </div>
+                            <h1 class="h3 mb-2">Mi Perfil</h1>
+                            <p class="text-muted">Actualiza tu información personal</p>
+                        </div>
+
+                        <!-- Información del Usuario -->
+                        <div class="profile-info">
+                            <div class="mb-4">
+                                <label class="form-label text-muted">Nombre de Usuario</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light">
+                                        <i class="bi bi-person"></i>👤
+                                    </span>
+                                    <input type="text" class="form-control" id="userName" placeholder="Nombre de Usuario" readonly>
+                                    <button class="btn btn-alt" type="button" id="editNameBtn">
+                                        Editar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label text-muted">Correo Electrónico</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light">
+                                        <i class="bi bi-envelope"></i>📧
+                                    </span>
+                                    <input type="email" class="form-control" id="userEmail" placeholder="Correo Electrónico" readonly>
+                                    <button class="btn btn-alt" type="button" id="editEmailBtn">
+                                        Editar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Botones de Acción -->
+                            <div class="d-grid gap-2 mt-4">
+                                <button class="btn btn-alt btn-lg" id="saveProfileBtn">
+                                    Guardar Cambios
+                                </button>
+                                <button class="btn btn-outline-secondary" id="changePasswordBtn">
+                                    Cambiar Contraseña
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="lib/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
+
+

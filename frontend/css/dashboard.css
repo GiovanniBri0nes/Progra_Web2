@@ -1,0 +1,335 @@
+/* Estilos generales */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #59a9ff 0%, #fffb86 100%);
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+}
+
+/* Main content - toma todo el espacio disponible */
+.main-content {
+    flex: 1 0 auto;
+}
+
+/* Navbar personalizado */
+.navbar {
+    background: linear-gradient(135deg, #59a9ffb7 0%, #fffb86a4 100%) !important;
+    backdrop-filter: blur(10px);
+}
+
+.navbar-brand {
+    font-weight: 700;
+}
+
+.nav-link {
+    font-weight: 500;
+    transition: transform 0.2s, color 0.2s;
+    margin: 0 0.5rem;
+}
+
+.nav-link:hover {
+    transform: translateY(-2px);
+    color: #fff !important;
+}
+
+.nav-link.logout:hover {
+    color: #ffc107 !important;
+}
+
+/* Sección de bienvenida */
+.welcome-section {
+    animation: fadeInDown 0.8s ease-out;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Cards de navegación rápida */
+.quick-card {
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeInUp 0.8s ease-out;
+    background: white;
+}
+
+.quick-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.card-icon {
+    font-size: 3rem;
+}
+
+/* Botones */
+.btn-primary {
+    background: linear-gradient(135deg, #59a9ffb7 0%, #fffb86a4 100%);
+    border: none;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-alt {
+    background: #55a7fa;
+    color: #ffffff;
+    border: none;
+    font-weight: 600;
+    transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+.btn-alt:hover {
+    background: #3d95e8;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(85, 167, 250, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(89, 169, 255, 0.4);
+    background: linear-gradient(135deg, #59a9ffb7 0%, #fffb86a4 100%);
+}
+
+/* Footer - Sticky al fondo */
+.footer {
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(10px);
+}
+
+/* Animaciones escalonadas para las cards */
+.col-md-6:nth-child(1) .quick-card {
+    animation-delay: 0.1s;
+}
+
+.col-md-6:nth-child(2) .quick-card {
+    animation-delay: 0.2s;
+}
+
+.col-md-6:nth-child(3) .quick-card {
+    animation-delay: 0.3s;
+}
+
+.col-md-6:nth-child(4) .quick-card {
+    animation-delay: 0.4s;
+}
+
+.col-md-6:nth-child(5) .quick-card {
+    animation-delay: 0.5s;
+}
+
+.col-md-6:nth-child(6) .quick-card {
+    animation-delay: 0.6s;
+}
+
+/* Estilos para las tarjetas de equipos */
+.team-card {
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.team-card .card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2d3436;
+}
+
+/* Estilos para el perfil */
+.profile-card {
+    border: none;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #59a9ff 0%, #fffb86 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.avatar-text {
+    font-size: 2.5rem;
+}
+
+/* Estilos para las tarjetas de partidos */
+.match-card {
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+}
+
+.match-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.match-teams h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2d3436;
+}
+
+/* Estilos para las tarjetas de estadios */
+.stadium-card {
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+}
+
+.stadium-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.stadium-card .card-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #2d3436;
+}
+
+.stadium-info {
+    font-size: 0.95rem;
+}
+
+.stadium-info p {
+    color: #636e72;
+}
+
+.stadium-card .badge {
+    font-weight: 500;
+    padding: 0.5em 1em;
+    font-size: 0.85rem;
+}
+
+.capacity-badge {
+    background-color: rgba(89, 169, 255, 0.2);
+    padding: 0.4em 0.8em;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    color: #2d3436;
+    font-size: 0.9rem;
+}
+
+.match-info {
+    font-size: 0.95rem;
+}
+
+.match-info p {
+    color: #636e72;
+}
+
+.match-card .badge {
+    font-weight: 500;
+    padding: 0.5em 1em;
+    font-size: 0.85rem;
+}
+
+/* Destacar la final */
+.final-match {
+    border: 2px solid rgba(255, 215, 0, 0.5);
+}
+
+.final-match:hover {
+    border-color: rgba(255, 215, 0, 0.8);
+}
+
+.profile-info .input-group-text {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.profile-info .form-control {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.profile-info .form-control:read-only {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.profile-info .btn-outline-secondary {
+    border-color: rgba(0, 0, 0, 0.2);
+    color: #666;
+}
+
+.profile-info .btn-outline-secondary:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #333;
+}
+
+.team-info {
+    font-size: 0.95rem;
+}
+
+.team-card .badge {
+    font-weight: 500;
+    padding: 0.5em 1em;
+}
+
+/* Espaciado para el grid */
+.row.g-4 {
+    --bs-gutter-y: 1.5rem;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .nav-link {
+        margin: 0.5rem 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .card-icon {
+        font-size: 2rem;
+    }
+}
