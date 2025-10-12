@@ -1,9 +1,47 @@
 const express = require('express');
 const router = express.Router();
+const { Usuario } = require('../bd/Modelos');
 
-// POST /login para autenticar y obtener el tokem JWT
-router.post('/', (req, res) => {
+// POST /login para autenticar usuario con JWT (simulado)
+router.post('/', async (req, res) => {
+    try {
+        const { correo, contrasena } = req.body;
 
+        // Validar que se envien los datos requeridos
+        if (!correo || !contrasena) {
+            return res.status(400).json({ mensaje: 'Faltan datos de inicio de sesión' });
+        }
+
+        // Buscar usuario por correo
+        const usuario = await Usuario.findOne({ correo: correo });
+
+        if (!usuario) {
+            return res.status(401).json({ mensaje: 'No existe el usuario en la base de datos' });
+        }
+
+        // Validar contraseña
+        if (usuario.contrasena !== contrasena) {
+            return res.status(401).json({ mensaje: 'Contraseña incorrecta' });
+        }
+
+        // Generar token JWT simulado (JWT_ + Id de usuario + hora ISO)
+        const tokenSimulado = `JWT_${usuario._id}_${new Date().toISOString()}`;
+
+        res.json({
+            mensaje: 'Usuario autenticado',
+            usuario: {
+                id: usuario._id,
+                correo: usuario.correo,
+                seleccionFav: usuario.seleccionFav,
+                estadioFav: usuario.estadioFav
+            },
+            token: tokenSimulado
+        });
+
+    } catch (error) {
+        console.error('Error al autenticar usuario:', error.message);
+        res.status(500).json({ mensaje: 'Error al autenticar usuario' });
+    }
 });
 
 module.exports = router;

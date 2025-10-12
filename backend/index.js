@@ -3,7 +3,7 @@ const cors = require('cors');
 const express = require('express');
 const conectarseConBD = require('./bd/ConexionBD');
 
-// Importar rutas
+// Obtener rutas
 const rutasAuth = require('./routes/auth.routes');
 const rutasConfederaciones = require('./routes/confederaciones.routes');
 const rutasEstadios = require('./routes/estadios.routes');
@@ -21,7 +21,7 @@ conectarseConBD();
 app.use(cors());
 app.use(express.json());
 
-// Rutas
+// Establecer rutas de la API
 app.use('/api/auth', rutasAuth);
 app.use('/api/confederaciones', rutasConfederaciones);
 app.use('/api/estadios', rutasEstadios);
