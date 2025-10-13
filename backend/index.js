@@ -31,11 +31,18 @@ app.use('/api/selecciones', rutasSelecciones);
 app.use('/api/usuarios', rutasUsuarios);
 
 // Ruta default de prueba para verificar que el servidor está funcionando
+//app.get('/', (req, res) => {
+ //   res.json({ mensaje: 'API del proyecto de progra web 2 funcionando' });
+//});
+
+//Ruta para que inicie el frontend
+app.use(express.static('../frontend'));
 app.get('/', (req, res) => {
-    res.json({ mensaje: 'API del proyecto de progra web 2 funcionando' });
+     res.sendFile(require('path').join(__dirname, '../frontend/login.html'));
 });
 
 // Iniciar servidor
 app.listen(3000, () => {
     console.log('Servidor iniciado en http://localhost:3000');
 });
+
