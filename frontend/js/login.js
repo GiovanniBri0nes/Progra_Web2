@@ -13,6 +13,3 @@ document.getElementById('bypassBtn').addEventListener('click', () => {
     // Redirigir al dashboard inmediatamente
     window.location.href = 'dashboard.html';
 });
-
-// Opcional: Si quieres que el formulario de login también funcione (sin backend)
-

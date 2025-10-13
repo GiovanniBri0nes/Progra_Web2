@@ -4,7 +4,7 @@ window.addEventListener('DOMContentLoaded', () => {
     displayWelcomeMessage();
 });
 
-// Función para verificar autenticación (modo desarrollo - crea sesión automática)
+// Función para verificar autenticación
 function checkAuth() {
     const token = localStorage.getItem('token') || sessionStorage.getItem('token');
     
