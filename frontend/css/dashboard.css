@@ -106,11 +106,44 @@ body {
     background: linear-gradient(135deg, #59a9ffb7 0%, #fffb86a4 100%);
 }
 
-/* Footer - Sticky al fondo */
+/* Footer - Sticky al fondo con estilo mejorado */
 .footer {
     flex-shrink: 0;
-    background: rgba(255, 255, 255, 0.9) !important;
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Logo del Mundial 2026 */
+.mundial-logo-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.mundial-logo {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .mundial-logo-container {
+        max-width: 300px;
+        padding: 1rem;
+    }
+}
+
+/* Padding para las columnas del footer */
+.footer .col-md-6 {
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 /* Animaciones escalonadas para las cards */

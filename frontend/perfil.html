@@ -48,30 +48,84 @@
 
                         <!-- Información del Usuario -->
                         <div class="profile-info">
+                            <!-- Correo Electrónico -->
                             <div class="mb-4">
-                                <label class="form-label text-muted">Nombre de Usuario</label>
+                                <label class="form-label text-muted">Correo Electrónico</label>
                                 <div class="input-group">
-                                    <span class="input-group-text bg-light">
-                                        <i class="bi bi-person"></i>👤
-                                    </span>
-                                    <input type="text" class="form-control" id="userName" placeholder="Nombre de Usuario" readonly>
-                                    <button class="btn btn-alt" type="button" id="editNameBtn">
+                                    <span class="input-group-text bg-light">📧</span>
+                                    <input type="email" class="form-control" id="userEmail" placeholder="Correo Electrónico" readonly>
+                                </div>
+                            </div>
+
+                            <!-- Contraseña -->
+                            <div class="mb-4">
+                                <label class="form-label text-muted">Contraseña</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light">🔒</span>
+                                    <input type="password" class="form-control" id="userPassword" placeholder="••••••••" readonly>
+                                    <button class="btn btn-alt" type="button" id="editPasswordBtn">
                                         Editar
                                     </button>
                                 </div>
                             </div>
 
+                            <!-- Selección Favorita -->
                             <div class="mb-4">
-                                <label class="form-label text-muted">Correo Electrónico</label>
-                                <div class="input-group">
-                                    <span class="input-group-text bg-light">
-                                        <i class="bi bi-envelope"></i>📧
-                                    </span>
-                                    <input type="email" class="form-control" id="userEmail" placeholder="Correo Electrónico" readonly>
-                                    <button class="btn btn-alt" type="button" id="editEmailBtn">
-                                        Editar
-                                    </button>
-                                </div>
+                                <label for="seleccion" class="form-label text-muted">Selección Favorita</label>
+                                <select class="form-select" id="seleccion">
+                                    <option value="">Selecciona tu selección</option>
+                                    <option value="Argentina">Argentina</option>
+                                    <option value="Brasil">Brasil</option>
+                                    <option value="México">México</option>
+                                    <option value="España">España</option>
+                                    <option value="Alemania">Alemania</option>
+                                    <option value="Francia">Francia</option>
+                                    <option value="Inglaterra">Inglaterra</option>
+                                    <option value="Portugal">Portugal</option>
+                                    <option value="Uruguay">Uruguay</option>
+                                    <option value="Colombia">Colombia</option>
+                                    <option value="Chile">Chile</option>
+                                    <option value="Estados Unidos">Estados Unidos</option>
+                                    <option value="Canadá">Canadá</option>
+                                    <option value="Italia">Italia</option>
+                                    <option value="Países Bajos">Países Bajos</option>
+                                    <option value="Bélgica">Bélgica</option>
+                                    <option value="Ecuador">Ecuador</option>
+                                    <option value="Perú">Perú</option>
+                                    <option value="Japón">Japón</option>
+                                    <option value="Corea del Sur">Corea del Sur</option>
+                                    <option value="Otra">Otra</option>
+                                </select>
+                            </div>
+
+                            <!-- Estadio Favorito -->
+                            <div class="mb-4">
+                                <label for="estadio" class="form-label text-muted">Estadio Favorito</label>
+                                <select class="form-select" id="estadio">
+                                    <option value="">Selecciona tu estadio</option>
+                                    <optgroup label="México">
+                                        <option value="Estadio Azteca">Estadio Azteca - Ciudad de México</option>
+                                        <option value="Estadio BBVA">Estadio BBVA - Monterrey</option>
+                                        <option value="Estadio Akron">Estadio Akron - Guadalajara</option>
+                                    </optgroup>
+                                    <optgroup label="Estados Unidos">
+                                        <option value="MetLife Stadium">MetLife Stadium - East Rutherford, NJ</option>
+                                        <option value="SoFi Stadium">SoFi Stadium - Inglewood, CA</option>
+                                        <option value="AT&T Stadium">AT&T Stadium - Arlington, TX</option>
+                                        <option value="Mercedes-Benz Stadium">Mercedes-Benz Stadium - Atlanta, GA</option>
+                                        <option value="NRG Stadium">NRG Stadium - Houston, TX</option>
+                                        <option value="Arrowhead Stadium">Arrowhead Stadium - Kansas City, MO</option>
+                                        <option value="Lincoln Financial Field">Lincoln Financial Field - Filadelfia, PA</option>
+                                        <option value="Lumen Field">Lumen Field - Seattle, WA</option>
+                                        <option value="Levi's Stadium">Levi's Stadium - Santa Clara, CA</option>
+                                        <option value="Gillette Stadium">Gillette Stadium - Foxborough, MA</option>
+                                        <option value="Hard Rock Stadium">Hard Rock Stadium - Miami Gardens, FL</option>
+                                    </optgroup>
+                                    <optgroup label="Canadá">
+                                        <option value="BC Place">BC Place - Vancouver, BC</option>
+                                        <option value="BMO Field">BMO Field - Toronto, ON</option>
+                                    </optgroup>
+                                </select>
                             </div>
 
                             <!-- Botones de Acción -->
@@ -79,8 +133,8 @@
                                 <button class="btn btn-alt btn-lg" id="saveProfileBtn">
                                     Guardar Cambios
                                 </button>
-                                <button class="btn btn-outline-secondary" id="changePasswordBtn">
-                                    Cambiar Contraseña
+                                <button class="btn btn-danger btn-lg" id="deleteAccountBtn">
+                                    Darse de Baja
                                 </button>
                             </div>
                         </div>
