@@ -34,8 +34,8 @@ const Confederacion = mongoose.model('Confederacion', esquemaConfederacion);
 const esquemaUsuario = new mongoose.Schema({
     correo: String,
     contrasena: String,
-    seleccionFav: mongoose.Schema.Types.ObjectId,
-    estadioFav: mongoose.Schema.Types.ObjectId
+    seleccionFav: String,
+    estadioFav: String
 }, { collection: 'usuarios' });
 
 const Usuario = mongoose.model('Usuario', esquemaUsuario);

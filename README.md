@@ -75,14 +75,11 @@ Get-Content bd/Colecciones.js | mongosh
 ### 4. Iniciar el backend
 ```bash
 cd backend
-node index.js
+npx nodemon index.js
 ```
 
-## Verificar funcionamiento del backend
-- Abre tu navegador en: http://localhost:3000
-- Debería verse: `{"mensaje":"API del proyecto de progra web 2 funcionando"}`
-
 ### 5. Iniciar el frontend
-Abre `frontend/index.html` en tu navegador
+- Si se inició previamente el backend, abre tu navegador en: http://localhost:3000
+- Debería abrirse en automático la página de login
 
 ---

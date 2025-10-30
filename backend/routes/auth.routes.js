@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcryptjs');
 const { Usuario } = require('../bd/Modelos');
 
 // POST /login para autenticar usuario con JWT (simulado)
@@ -19,8 +20,9 @@ router.post('/', async (req, res) => {
             return res.status(401).json({ mensaje: 'No existe el usuario en la base de datos' });
         }
 
-        // Validar contraseña
-        if (usuario.contrasena !== contrasena) {
+        // Validar contraseña comparando con el hash
+        const contraseñaValida = await bcrypt.compare(contrasena, usuario.contrasena);
+        if (!contraseñaValida) {
             return res.status(401).json({ mensaje: 'Contraseña incorrecta' });
         }
 
