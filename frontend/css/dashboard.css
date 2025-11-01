@@ -100,6 +100,13 @@ body {
     transform: translateY(-2px);
 }
 
+.btn-alt:disabled {
+    background: #63b1ff;
+    color: #ffffff;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
 .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(89, 169, 255, 0.4);

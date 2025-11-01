@@ -3,7 +3,13 @@ const URL_API = 'http://localhost:3000';
 
 // Verificar autenticación cuando carga el DOM
 window.addEventListener('DOMContentLoaded', async () => {
-    await verificarAutenticacion();
+    // Primero verificar autenticación
+    const autenticado = await verificarAutenticacion();
+    if (!autenticado) {
+        return; // Detener ejecución si no está autenticado
+    }
+    
+    // Si está autenticado, continuar mostrando el mensaje de bienvenida
     mostrarMensajeBienvenida();
 });
 
@@ -14,7 +20,7 @@ async function verificarAutenticacion() {
     // Verificar que exista el token, si no existe redirigir al login
     if (!token) {
         window.location.href = 'login.html?error=token_invalido';
-        return;
+        return false;
     }
     
     // Verificar que el token sea válido con el del servidor
@@ -32,14 +38,18 @@ async function verificarAutenticacion() {
             sessionStorage.removeItem('token');
             sessionStorage.removeItem('user');
             window.location.href = 'login.html?error=token_invalido';
-            return;
+            return false;
         }
+        
+        return true; // Autenticación exitosa
+        
     } catch (error) {
         console.error('Error verificando token:', error);
         // En caso de error, también redirigir al login
         sessionStorage.removeItem('token');
         sessionStorage.removeItem('user');
         window.location.href = 'login.html?error=verificacion_fallida';
+        return false;
     }
 }
 

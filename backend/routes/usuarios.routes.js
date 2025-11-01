@@ -50,16 +50,16 @@ router.post('/', async (req, res) => {
 });
 
 
-// GET /usuarios/:id  se obtendra los usuarios por id (requiere autenticación)
-router.get('/:id', verificarToken, async (req, res) => {
+// GET /usuarios/:correo  se obtendra los usuarios por correo (requiere autenticación)
+router.get('/:correo', verificarToken, async (req, res) => {
     try {
-        const usuarioId = req.params.id;
+        const correo = req.params.correo;
 
-        if (!mongoose.Types.ObjectId.isValid(usuarioId)) {
-            return res.status(400).json({ mensaje: 'ID de usuario inválido' });
+        if (!correo || correo.trim() === '') {
+            return res.status(400).json({ mensaje: 'El correo es requerido' });
         }
 
-        const usuario = await Usuario.findById(usuarioId)
+        const usuario = await Usuario.findOne({ correo })
 
         if (!usuario) {
             // Código 404: No encontrado
@@ -75,27 +75,53 @@ router.get('/:id', verificarToken, async (req, res) => {
 });
 
 
-// PUT /usuarios/:id  se actualizara contrasena, seleccionFav y estadioFav del usuario (requiere autenticación)
-router.put('/:id', verificarToken, async (req, res) => {
+// PUT /usuarios/:correo  se actualizara contrasena, seleccionFav y estadioFav del usuario (requiere autenticación)
+router.put('/:correo', verificarToken, async (req, res) => {
     try {
-        const usuarioId = req.params.id;
+        const correo = req.params.correo;
         const { contrasena, seleccionFav, estadioFav } = req.body;
 
-        if (!mongoose.Types.ObjectId.isValid(usuarioId)) {
-            return res.status(400).json({ mensaje: 'ID de usuario inválido' });
+        if (!correo || correo.trim() === '') {
+            return res.status(400).json({ mensaje: 'El correo es requerido' });
         }
 
-        // Validar que seleccionFav y estadioFav sean strings
-        if (typeof seleccionFav !== 'string' || seleccionFav.trim() === '') {
-            return res.status(400).json({ mensaje: 'La selección debe ser un texto válido' });
-        }
-        if (typeof estadioFav !== 'string' || estadioFav.trim() === '') {
-            return res.status(400).json({ mensaje: 'El estadio debe ser un texto válido' });
+        // Objeto para almacenar los campos a actualizar
+        const camposActualizar = {};
+
+        // Solo actualizar la contraseña si se proporciona
+        if (contrasena !== undefined && contrasena !== null && contrasena.trim() !== '') {
+            // Validar longitud de la contraseña
+            if (contrasena.length < 8) {
+                return res.status(400).json({ mensaje: 'La contraseña debe tener al menos 8 caracteres' });
+            }
+            // Hacer hash de la contraseña con la librería bcryptjs
+            camposActualizar.contrasena = await bcrypt.hash(contrasena, 10);
         }
 
-        const usuarioActualizado = await Usuario.findByIdAndUpdate(
-            usuarioId,
-            { contrasena, seleccionFav, estadioFav },
+        // Solo actualizar seleccionFav si se proporciona
+        if (seleccionFav !== undefined && seleccionFav !== null) {
+            if (typeof seleccionFav !== 'string' || seleccionFav.trim() === '') {
+                return res.status(400).json({ mensaje: 'La selección debe ser un texto válido' });
+            }
+            camposActualizar.seleccionFav = seleccionFav;
+        }
+
+        // Solo actualizar estadioFav si se proporciona
+        if (estadioFav !== undefined && estadioFav !== null) {
+            if (typeof estadioFav !== 'string' || estadioFav.trim() === '') {
+                return res.status(400).json({ mensaje: 'El estadio debe ser un texto válido' });
+            }
+            camposActualizar.estadioFav = estadioFav;
+        }
+
+        // Verificar que al menos se esté actualizando un campo
+        if (Object.keys(camposActualizar).length === 0) {
+            return res.status(400).json({ mensaje: 'Debe proporcionar al menos un campo para actualizar' });
+        }
+
+        const usuarioActualizado = await Usuario.findOneAndUpdate(
+            { correo },
+            camposActualizar,
             { new: true } // Devuelve el documento actualizado
         );
 
@@ -112,16 +138,16 @@ router.put('/:id', verificarToken, async (req, res) => {
 });
 
 
-// DELETE /usuarios/:id para eliminar un usuario (requiere autenticación)
-router.delete('/:id', verificarToken, async (req, res) => {
+// DELETE /usuarios/:correo para eliminar un usuario (requiere autenticación)
+router.delete('/:correo', verificarToken, async (req, res) => {
     try {
-        const usuarioId = req.params.id;
+        const correo = req.params.correo;
 
-        if (!mongoose.Types.ObjectId.isValid(usuarioId)) {
-            return res.status(400).json({ mensaje: 'ID de usuario inválido' });
+        if (!correo || correo.trim() === '') {
+            return res.status(400).json({ mensaje: 'El correo es requerido' });
         }
 
-        const usuarioEliminado = await Usuario.findByIdAndDelete(usuarioId);
+        const usuarioEliminado = await Usuario.findOneAndDelete({ correo });
 
         if (!usuarioEliminado) {
             return res.status(404).json({ mensaje: 'Usuario no encontrado' });
