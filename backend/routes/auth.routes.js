@@ -17,13 +17,13 @@ router.post('/', async (req, res) => {
         const usuario = await Usuario.findOne({ correo: correo });
 
         if (!usuario) {
-            return res.status(401).json({ mensaje: 'No existe el usuario en la base de datos' });
+            return res.status(401).json({ mensaje: 'Credenciales incorrectas' });
         }
 
-        // Validar contraseña comparando con el hash
+        // Validar contraseña comparando el hash generado con el de la base de datos
         const contraseñaValida = await bcrypt.compare(contrasena, usuario.contrasena);
         if (!contraseñaValida) {
-            return res.status(401).json({ mensaje: 'Contraseña incorrecta' });
+            return res.status(401).json({ mensaje: 'Credenciales incorrectas' });
         }
 
         // Generar token JWT simulado (JWT_ + Id de usuario + hora ISO)

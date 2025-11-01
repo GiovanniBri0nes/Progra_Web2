@@ -1,15 +1,98 @@
-// Botón de bypass - Acceso directo al dashboard
-document.getElementById('bypassBtn').addEventListener('click', () => {
-    // Crear sesión demo
-    const demoUser = {
-        nombre: 'Usuario demo',
-        email: 'demo@mundial2026.com'
+// URL base de la API
+const URL_API = 'http://localhost:3000';
+
+// Referencias a elementos del DOM
+const formularioLogin = document.getElementById('loginForm');
+const inputCorreo = document.getElementById('email');
+const inputContrasena = document.getElementById('password');
+const botonLogin = document.getElementById('loginBtn');
+const textoBotonLogin = document.getElementById('loginBtnText');
+const spinnerBotonLogin = document.getElementById('loginBtnSpinner');
+
+// Evento de submit del formulario
+formularioLogin.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // Validar formulario
+    if (!validarFormulario()) {
+        return;
+    }
+    
+    // Preparar datos del usuario
+    const datosLogin = {
+        correo: inputCorreo.value.trim(),
+        contrasena: inputContrasena.value
     };
     
-    // Guardar sesión demo
-    localStorage.setItem('token', 'demo-token-bypass');
-    localStorage.setItem('user', JSON.stringify(demoUser));
+    // Mostrar icono de carga
+    mostrarCarga(true);
     
-    // Redirigir al dashboard inmediatamente
-    window.location.href = 'dashboard.html';
+    try {
+        // Autenticar usuario
+        const resultado = await autenticarUsuario(datosLogin);
+        
+        // Guardar token y datos del usuario en localStorage
+        localStorage.setItem('token', resultado.token);
+        localStorage.setItem('user', JSON.stringify(resultado.usuario));
+        
+        // Redirigir al dashboard
+        window.location.href = 'dashboard.html';
+        
+    } catch (error) {
+        console.error('Error al iniciar sesión:', error);
+        alert(error.message || 'Error al iniciar sesión. Por favor intenta nuevamente.');
+    } finally {
+        mostrarCarga(false);
+    }
 });
+
+// Función para mostrar/ocultar el spinner de carga
+function mostrarCarga(cargando) {
+    if (cargando) {
+        botonLogin.disabled = true;
+        textoBotonLogin.classList.add('d-none');
+        spinnerBotonLogin.classList.remove('d-none');
+    } else {
+        botonLogin.disabled = false;
+        textoBotonLogin.classList.remove('d-none');
+        spinnerBotonLogin.classList.add('d-none');
+    }
+}
+
+// Función para validar el formulario
+function validarFormulario() {
+    const correo = inputCorreo.value.trim();
+    const contrasena = inputContrasena.value;
+    
+    // Validar que ambos campos no estén vacíos
+    if (correo === '' || contrasena === '') {
+        alert('Por favor completa todos los campos.');
+        return false;
+    }
+    
+    return true;
+}
+
+// Función para autenticar usuario
+async function autenticarUsuario(datosLogin) {
+    try {
+        const respuesta = await fetch(`${URL_API}/api/auth`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(datosLogin)
+        });
+        
+        const datos = await respuesta.json();
+        
+        if (!respuesta.ok) {
+            throw new Error(datos.mensaje || 'Error al iniciar sesión');
+        }
+        
+        return datos;
+        
+    } catch (error) {
+        throw error;
+    }
+}
