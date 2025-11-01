@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const { Confederacion } = require('../bd/Modelos');
+const verificarToken = require('../middlewares/auth.middleware');
 
-// GET /jugadores: obtener todos los jugadores con nombre y selección
-router.get('/', async (req, res) => {
+// GET /jugadores: obtener todos los jugadores con nombre y selección (requiere autenticación)
+router.get('/', verificarToken, async (req, res) => {
     try {
         // Traer primero las confederaciones (solo con los campos necesarios)
         const confederaciones = await Confederacion.find({}, {

@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const { Estadio } = require('../bd/Modelos');
+const verificarToken = require('../middlewares/auth.middleware');
 
-// GET /partidos: obtener todos los partidos con fecha y estadio
-router.get('/', async (req, res) => {
+// GET /partidos: obtener todos los partidos con fecha y estadio (requiere autenticación)
+router.get('/', verificarToken, async (req, res) => {
     try {
         
         // Traer primero los estadios (solo con los campos necesarios)
