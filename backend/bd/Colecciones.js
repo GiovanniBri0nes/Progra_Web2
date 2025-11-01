@@ -582,14 +582,8 @@ db.usuarios.insertMany([
   {
     correo: "prueba@gmail.com",
     contrasena: "admin1234",
-    seleccionFav: ObjectId("68e8bd92f28b549379cebeed"), // Reemplazar con un ObjectId válido de una selección
-    estadioFav: ObjectId("68e8b875d51209951ecebfbf"), // Reemplazar con un ObjectId válido de un estadio
-  },
-  {
-    correo: "prueba2@gmail.com",
-    contrasena: "admin1234",
-    seleccionFav: ObjectId("68e8bd91f28b549379cebea4"), // Reemplazar con un ObjectId válido de una selección
-    estadioFav: ObjectId("68e8aa2be961bb4591cebfc0"), // Reemplazar con un ObjectId válido de un estadio
+    seleccionFav: "Mexico",
+    estadioFav: "Estadio Azteca",
   }
 ]);
 
