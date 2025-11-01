@@ -19,10 +19,17 @@ Sitio web que permite a los usuarios registrarse e iniciar sesión para acceder 
 - ODM: Mongoose
 - Base de datos: MongoDB
 
+**Librerías externas:**
+- nodemon: Para refrescado automático en el servidor al modificar el código del backend
+- bcryptjs: para el hasheo seguro de contraseñas
+- jsonwebtoken: para la generación y verificación de tokens JWT
+
 **Descripción de las carpetas contenidas:**
-- backend: estará todo lo relacionado al backend del proyecto como lo es el tema de las API, base de datos, etc.
+- backend: estará todo lo relacionado al backend del proyecto como lo es el tema de la API, base de datos, etc.
   - node_modules: contiene todas las dependencias de Node.js instaladas (Express, Mongoose, CORS, etc.).
   - bd: se encuentra el script de conexión con la base de datos de MongoDB, el script de creación de las colecciones en la base de datos y el archivo de modelos de datos de mongoose para cada entidad.
+  - config: contiene archivos de configuración del proyecto como la configuración de JWT para autenticación.
+  - middlewares: contiene los middlewares propios del proyecto como el de autenticación con JWT para proteger las rutas.
   - routes: se encuentra las rutas de los endpoints de la API.
 - frontend: estará todo lo relacionado al diseño y las páginas.
   - css: contiene los estilos personalizados del proyecto.
@@ -35,6 +42,8 @@ Progra_Web2/
 ├── backend/
 │   ├── node_modules/
 │   ├── bd/
+│   ├── config/
+│   ├── middlewares/
 │   └── routes/
 └── frontend/
     ├── css/

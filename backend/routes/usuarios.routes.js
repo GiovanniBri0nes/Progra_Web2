@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-const { Usuario, Confederacion, Estadio } = require('../bd/Modelos');
+const { Usuario } = require('../bd/Modelos');
+const verificarToken = require('../middlewares/auth.middleware');
 
 // POST para crear un nuevo usuario //
 router.post('/', async (req, res) => {
@@ -49,8 +50,8 @@ router.post('/', async (req, res) => {
 });
 
 
-// GET /usuarios/:id  se obtendra los usuarios por id //
-router.get('/:id', async (req, res) => {
+// GET /usuarios/:id  se obtendra los usuarios por id (requiere autenticación)
+router.get('/:id', verificarToken, async (req, res) => {
     try {
         const usuarioId = req.params.id;
 
@@ -74,8 +75,8 @@ router.get('/:id', async (req, res) => {
 });
 
 
-// PUT /usuarios/:id  se actualizara contrasena, seleccionFav y estadioFav del usuario
-router.put('/:id', async (req, res) => {
+// PUT /usuarios/:id  se actualizara contrasena, seleccionFav y estadioFav del usuario (requiere autenticación)
+router.put('/:id', verificarToken, async (req, res) => {
     try {
         const usuarioId = req.params.id;
         const { contrasena, seleccionFav, estadioFav } = req.body;
@@ -111,8 +112,8 @@ router.put('/:id', async (req, res) => {
 });
 
 
-// DELETE /usuarios/:id para eliminar un usuario
-router.delete('/:id', async (req, res) => {
+// DELETE /usuarios/:id para eliminar un usuario (requiere autenticación)
+router.delete('/:id', verificarToken, async (req, res) => {
     try {
         const usuarioId = req.params.id;
 

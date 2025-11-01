@@ -17,7 +17,7 @@ const app = express();
 // Conectarse a MongoDB
 conectarseConBD();
 
-// Middlewares
+// Middlewares de EXPRESS
 app.use(cors());
 app.use(express.json());
 
@@ -29,11 +29,6 @@ app.use('/api/jugadores', rutasJugadores);
 app.use('/api/partidos', rutasPartidos);
 app.use('/api/selecciones', rutasSelecciones);
 app.use('/api/usuarios', rutasUsuarios);
-
-// Ruta default de prueba para verificar que el servidor está funcionando
-//app.get('/', (req, res) => {
- //   res.json({ mensaje: 'API del proyecto de progra web 2 funcionando' });
-//});
 
 //Ruta para que inicie el frontend
 app.use(express.static('../frontend'));

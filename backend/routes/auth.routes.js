@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const { Usuario } = require('../bd/Modelos');
+const { secreto, tiempoExpiracion } = require('../config/jwt.config');
+const verificarToken = require('../middlewares/auth.middleware');
 
-// POST /login para autenticar usuario con JWT (simulado)
+// POST /login para autenticar usuario con correo y contraseña //
 router.post('/', async (req, res) => {
     try {
         const { correo, contrasena } = req.body;
@@ -26,8 +29,13 @@ router.post('/', async (req, res) => {
             return res.status(401).json({ mensaje: 'Credenciales incorrectas' });
         }
 
-        // Generar token JWT simulado (JWT_ + Id de usuario + hora ISO)
-        const tokenSimulado = `JWT_${usuario._id}_${new Date().toISOString()}`;
+        // Generar token JWT
+        const payload = {
+            id: usuario._id,
+            correo: usuario.correo
+        };
+        
+        const token = jwt.sign(payload, secreto, { expiresIn: tiempoExpiracion });
 
         res.json({
             mensaje: 'Usuario autenticado',
@@ -37,12 +45,25 @@ router.post('/', async (req, res) => {
                 seleccionFav: usuario.seleccionFav,
                 estadioFav: usuario.estadioFav
             },
-            token: tokenSimulado
+            token: token
         });
 
     } catch (error) {
         console.error('Error al autenticar usuario:', error.message);
         res.status(500).json({ mensaje: 'Error al autenticar usuario' });
+    }
+});
+
+// GET /verificar para verificar que el token sea válido
+router.get('/verificar', verificarToken, (req, res) => {
+    try {
+        res.json({
+            mensaje: 'Token válido',
+            usuario: req.usuario
+        });
+    } catch (error) {
+        console.error('Error al verificar token:', error.message);
+        res.status(500).json({ mensaje: 'Error al verificar token' });
     }
 });
 

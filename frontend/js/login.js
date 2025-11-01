@@ -1,6 +1,23 @@
 // URL base de la API
 const URL_API = 'http://localhost:3000';
 
+// Verificar si hay un error de token al cargar la página
+window.addEventListener('DOMContentLoaded', () => {
+    
+    const parametros = new URLSearchParams(window.location.search);
+    const error = parametros.get('error');
+    
+    if (error === 'token_invalido') {
+        alert('Tu sesión ha expirado. Por favor inicia sesión nuevamente.');
+    } 
+    else if (error === 'verificacion_fallida') {
+        alert('Error al verificar tu sesión. Por favor inicia sesión nuevamente.');
+    }
+    
+    // Limpiar la URL para que no vuelva a mostrar el error al recargar
+    window.history.replaceState({}, document.title, window.location.pathname);
+});
+
 // Referencias a elementos del DOM
 const formularioLogin = document.getElementById('loginForm');
 const inputCorreo = document.getElementById('email');
@@ -31,10 +48,10 @@ formularioLogin.addEventListener('submit', async (e) => {
         // Autenticar usuario
         const resultado = await autenticarUsuario(datosLogin);
         
-        // Guardar token y datos del usuario en localStorage
-        localStorage.setItem('token', resultado.token);
-        localStorage.setItem('user', JSON.stringify(resultado.usuario));
-        
+        // Guardar token y datos del usuario en sessionStorage
+        sessionStorage.setItem('token', resultado.token);
+        sessionStorage.setItem('user', JSON.stringify(resultado.usuario));
+
         // Redirigir al dashboard
         window.location.href = 'dashboard.html';
         
