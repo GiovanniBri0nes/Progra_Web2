@@ -8,10 +8,10 @@ window.addEventListener('DOMContentLoaded', () => {
     const error = parametros.get('error');
     
     if (error === 'token_invalido') {
-        alert('Tu sesión ha expirado. Por favor inicia sesión nuevamente.');
+        mostrarAlerta('Tu sesión ha expirado. Por favor inicia sesión nuevamente.', 'warning');
     } 
     else if (error === 'verificacion_fallida') {
-        alert('Error al verificar tu sesión. Por favor inicia sesión nuevamente.');
+        mostrarAlerta('Error al verificar tu sesión. Por favor inicia sesión nuevamente.', 'danger');
     }
     
     // Limpiar la URL para que no vuelva a mostrar el error al recargar
@@ -25,10 +25,50 @@ const inputContrasena = document.getElementById('password');
 const botonLogin = document.getElementById('loginBtn');
 const textoBotonLogin = document.getElementById('loginBtnText');
 const spinnerBotonLogin = document.getElementById('loginBtnSpinner');
+const alertContainer = document.getElementById('alertContainer');
+
+// Función para mostrar alertas con estilo
+function mostrarAlerta(mensaje, tipo = 'danger') {
+    alertContainer.innerHTML = `
+        <div class="alert alert-${tipo} alert-dismissible fade show" role="alert">
+            ${mensaje}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    `;
+    
+    // Auto-ocultar después de 5 segundos
+    setTimeout(() => {
+        const alerta = alertContainer.querySelector('.alert');
+        if (alerta) {
+            alerta.classList.remove('show');
+            setTimeout(() => alertContainer.innerHTML = '', 150);
+        }
+    }, 5000);
+}
+
+// Función para limpiar alertas
+function limpiarAlerta() {
+    alertContainer.innerHTML = '';
+}
+
+// Función para marcar campo con error
+function marcarError(input) {
+    input.classList.add('is-invalid');
+}
+
+// Función para limpiar errores de campos
+function limpiarErrores() {
+    inputCorreo.classList.remove('is-invalid');
+    inputContrasena.classList.remove('is-invalid');
+}
 
 // Evento de submit del formulario
 formularioLogin.addEventListener('submit', async (e) => {
     e.preventDefault();
+    
+    // Limpiar errores anteriores
+    limpiarErrores();
+    limpiarAlerta();
     
     // Validar formulario
     if (!validarFormulario()) {
@@ -51,14 +91,13 @@ formularioLogin.addEventListener('submit', async (e) => {
         // Guardar token y datos del usuario en sessionStorage
         sessionStorage.setItem('token', resultado.token);
         sessionStorage.setItem('user', JSON.stringify(resultado.usuario));
-    
 
         // Redirigir al dashboard
         window.location.href = 'dashboard.html';
         
     } catch (error) {
         console.error('Error al iniciar sesión:', error);
-        alert(error.message || 'Error al iniciar sesión. Por favor intenta nuevamente.');
+        mostrarAlerta(error.message || 'Error al iniciar sesión. Por favor intenta nuevamente.', 'danger');
     } finally {
         mostrarCarga(false);
     }
@@ -79,12 +118,29 @@ function mostrarCarga(cargando) {
 
 // Función para validar el formulario
 function validarFormulario() {
-    const correo = inputCorreo.value.trim().toLowerCase();
+    const correo = inputCorreo.value.trim();
     const contrasena = inputContrasena.value;
+    let esValido = true;
     
-    // Validar que ambos campos no estén vacíos
-    if (correo === '' || contrasena === '') {
-        alert('Por favor completa todos los campos.');
+    // Validar que el correo no esté vacío
+    if (correo === '') {
+        marcarError(inputCorreo);
+        mostrarAlerta('Por favor ingresa tu correo electrónico.', 'danger');
+        return false;
+    }
+    
+    // Validar formato de correo
+    const regexCorreo = /^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!regexCorreo.test(correo)) {
+        marcarError(inputCorreo);
+        mostrarAlerta('Por favor ingresa un correo electrónico válido.', 'danger');
+        return false;
+    }
+    
+    // Validar que la contraseña no esté vacía
+    if (contrasena === '') {
+        marcarError(inputContrasena);
+        mostrarAlerta('Por favor ingresa tu contraseña.', 'danger');
         return false;
     }
     
@@ -114,3 +170,12 @@ async function autenticarUsuario(datosLogin) {
         throw error;
     }
 }
+
+// Limpiar errores al escribir en los campos
+inputCorreo.addEventListener('input', () => {
+    inputCorreo.classList.remove('is-invalid');
+});
+
+inputContrasena.addEventListener('input', () => {
+    inputContrasena.classList.remove('is-invalid');
+});

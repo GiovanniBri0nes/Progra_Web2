@@ -10,6 +10,7 @@ const botonGuardar = document.getElementById('saveProfileBtn');
 const botonEliminar = document.getElementById('deleteAccountBtn');
 const avatarSpinner = document.getElementById('avatarSpinner');
 const avatarIcon = document.getElementById('avatarIcon');
+const alertContainer = document.getElementById('alertContainer');
 
 // Variables globales
 let usuarioActual = null;
@@ -17,30 +18,59 @@ let datosOriginales = null;
 
 // Cargar datos al cargar la página
 document.addEventListener('DOMContentLoaded', async () => {
-    // Primero verificar autenticación
     const autenticado = await verificarAutenticacion();
-    if (!autenticado) {
-        return; // Detener ejecución si no está autenticado
-    }
+    if (!autenticado) return;
     
-    // Si está autenticado, continuar cargando datos
     await cargarSelecciones();
     await cargarEstadios();
     await cargarDatosUsuario();
     configurarDeteccionCambios();
 });
 
+// Función para mostrar alertas con estilo
+function mostrarAlerta(mensaje, tipo = 'danger') {
+    alertContainer.innerHTML = `
+        <div class="alert alert-${tipo} alert-dismissible fade show" role="alert">
+            ${mensaje}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    `;
+    
+    setTimeout(() => {
+        const alerta = alertContainer.querySelector('.alert');
+        if (alerta) {
+            alerta.classList.remove('show');
+            setTimeout(() => alertContainer.innerHTML = '', 150);
+        }
+    }, 5000);
+}
+
+// Función para limpiar alertas
+function limpiarAlerta() {
+    alertContainer.innerHTML = '';
+}
+
+// Función para marcar campo con error
+function marcarError(input) {
+    input.classList.add('is-invalid');
+}
+
+// Función para limpiar errores
+function limpiarErrores() {
+    selectSeleccion.classList.remove('is-invalid');
+    selectEstadio.classList.remove('is-invalid');
+    inputContrasena.classList.remove('is-invalid');
+}
+
 // Función para verificar autenticación
 async function verificarAutenticacion() {
     const token = sessionStorage.getItem('token');
     
-    // Verificar que exista el token, si no existe redirigir al login
     if (!token) {
         window.location.href = 'login.html?error=token_invalido';
         return false;
     }
     
-    // Verificar que el token sea válido con el del servidor
     try {
         const respuesta = await fetch(`${URL_API}/api/auth/verificar`, {
             method: 'GET',
@@ -50,7 +80,6 @@ async function verificarAutenticacion() {
             }
         });
         
-        // Si el token no es válido, redirigir al login
         if (!respuesta.ok) {
             sessionStorage.removeItem('token');
             sessionStorage.removeItem('user');
@@ -58,11 +87,10 @@ async function verificarAutenticacion() {
             return false;
         }
         
-        return true; // Autenticación exitosa
+        return true;
         
     } catch (error) {
         console.error('Error verificando token:', error);
-        // En caso de error, también redirigir al login
         sessionStorage.removeItem('token');
         sessionStorage.removeItem('user');
         window.location.href = 'login.html?error=verificacion_fallida';
@@ -73,13 +101,12 @@ async function verificarAutenticacion() {
 // Función para cargar datos del usuario actual
 async function cargarDatosUsuario() {
     try {
-        // Mostrar spinner de carga
         mostrarSpinnerAvatar(true);
         
         const usuarioString = sessionStorage.getItem('user');
         
         if (!usuarioString) {
-            alert('Error: No se encontró información del usuario');
+            mostrarAlerta('Error: No se encontró información del usuario', 'danger');
             window.location.href = 'login.html';
             return;
         }
@@ -87,7 +114,6 @@ async function cargarDatosUsuario() {
         usuarioActual = JSON.parse(usuarioString);
         const token = sessionStorage.getItem('token');
         
-        // Obtener datos del usuario desde la API
         const respuesta = await fetch(`${URL_API}/api/usuarios/${usuarioActual.correo}`, {
             method: 'GET',
             headers: {
@@ -103,30 +129,23 @@ async function cargarDatosUsuario() {
         const usuario = await respuesta.json();
         usuarioActual = usuario;
         
-        // Llenar formulario con datos actuales
         tituloPerfil.textContent = usuario.correo || 'Mi Perfil';
         selectSeleccion.value = usuario.seleccionFav || '';
         selectEstadio.value = usuario.estadioFav || '';
-        // El campo de contraseña se deja vacío para que el usuario ingrese una nueva
         inputContrasena.value = '';
         
-        // Guardar datos originales para comparar cambios
         datosOriginales = {
             seleccionFav: usuario.seleccionFav || '',
             estadioFav: usuario.estadioFav || '',
-            contrasena: '' // La contraseña siempre empieza vacía
+            contrasena: ''
         };
         
-        // Deshabilitar el botón de guardar inicialmente
         botonGuardar.disabled = true;
-        
-        // Ocultar spinner y mostrar icono
         mostrarSpinnerAvatar(false);
         
     } catch (error) {
         console.error('Error al cargar datos del usuario:', error);
-        alert('Error al cargar tu perfil. Por favor intenta nuevamente.');
-        // Ocultar spinner incluso si hay error
+        mostrarAlerta('Error al cargar tu perfil. Por favor intenta nuevamente.', 'danger');
         mostrarSpinnerAvatar(false);
     }
 }
@@ -142,7 +161,6 @@ async function cargarSelecciones() {
         
         const selecciones = await respuesta.json();
         
-        // Agrupar selecciones por confederación
         const seleccionesPorConfederacion = {};
         selecciones.forEach(seleccion => {
             if (!seleccionesPorConfederacion[seleccion.confederacion]) {
@@ -151,7 +169,6 @@ async function cargarSelecciones() {
             seleccionesPorConfederacion[seleccion.confederacion].push(seleccion);
         });
         
-        // Crear optgroups (grupos de opciones) por confederación
         Object.keys(seleccionesPorConfederacion).forEach(confederacion => {
             const grupo = document.createElement('optgroup');
             grupo.label = confederacion;
@@ -168,7 +185,7 @@ async function cargarSelecciones() {
         
     } catch (error) {
         console.error('Error al cargar selecciones:', error);
-        alert('Error al cargar las selecciones. Por favor recarga la página.');
+        mostrarAlerta('Error al cargar las selecciones. Por favor recarga la página.', 'warning');
     }
 }
 
@@ -183,7 +200,6 @@ async function cargarEstadios() {
         
         const estadios = await respuesta.json();
         
-        // Agrupar estadios por país
         const estadiosPorPais = {};
         estadios.forEach(estadio => {
             if (!estadiosPorPais[estadio.pais]) {
@@ -192,7 +208,6 @@ async function cargarEstadios() {
             estadiosPorPais[estadio.pais].push(estadio);
         });
         
-        // Crear optgroups (grupos de opciones) por país
         Object.keys(estadiosPorPais).forEach(pais => {
             const grupo = document.createElement('optgroup');
             grupo.label = pais;
@@ -209,23 +224,27 @@ async function cargarEstadios() {
         
     } catch (error) {
         console.error('Error al cargar estadios:', error);
-        alert('Error al cargar los estadios. Por favor recarga la página.');
+        mostrarAlerta('Error al cargar los estadios. Por favor recarga la página.', 'warning');
     }
 }
 
-// Función para configurar la detección de cambios en el formulario
+// Función para configurar la detección de cambios
 function configurarDeteccionCambios() {
-    // Detectar cambios en selección favorita
-    selectSeleccion.addEventListener('change', verificarCambios);
-    
-    // Detectar cambios en estadio favorito
-    selectEstadio.addEventListener('change', verificarCambios);
-    
-    // Detectar cambios en contraseña
-    inputContrasena.addEventListener('input', verificarCambios);
+    selectSeleccion.addEventListener('change', () => {
+        selectSeleccion.classList.remove('is-invalid');
+        verificarCambios();
+    });
+    selectEstadio.addEventListener('change', () => {
+        selectEstadio.classList.remove('is-invalid');
+        verificarCambios();
+    });
+    inputContrasena.addEventListener('input', () => {
+        inputContrasena.classList.remove('is-invalid');
+        verificarCambios();
+    });
 }
 
-// Función para verificar si hay cambios en el formulario
+// Función para verificar si hay cambios
 function verificarCambios() {
     if (!datosOriginales) return;
     
@@ -233,7 +252,6 @@ function verificarCambios() {
     const hayEstadioCambiado = selectEstadio.value !== datosOriginales.estadioFav;
     const hayContrasenaNueva = inputContrasena.value.trim() !== '';
     
-    // Habilitar botón si hay al menos un cambio
     const hayCambios = haySeleccionCambiada || hayEstadioCambiado || hayContrasenaNueva;
     botonGuardar.disabled = !hayCambios;
 }
@@ -242,105 +260,98 @@ function verificarCambios() {
 botonGuardar.addEventListener('click', async (e) => {
     e.preventDefault();
     
-    // Validar que haya cambios
+    limpiarErrores();
+    limpiarAlerta();
+    
     if (!validarCambios()) {
-        alert('No hay cambios para guardar');
+        mostrarAlerta('No hay cambios para guardar.', 'warning');
         return;
     }
     
-    // Preparar solo los datos que cambiaron
     const datosActualizados = {};
     
-    // Solo incluir contraseña si se ingresó una nueva
+    // Validar contraseña si se ingresó una nueva
     if (inputContrasena.value.trim() !== '') {
-
-        // Validar longitud de contraseña
         if (inputContrasena.value.length < 8) {
-            alert('La contraseña debe tener al menos 8 caracteres');
+            marcarError(inputContrasena);
+            mostrarAlerta('La contraseña debe tener al menos 8 caracteres.', 'danger');
             return;
         }
-        // Validar complejidad de contraseña
-        if (!validarContrasena(inputContrasena.value)) {
-            alert('La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial');
+        
+        if (!validarContrasenaRegex(inputContrasena.value)) {
+            marcarError(inputContrasena);
+            mostrarAlerta('La contraseña debe contener al menos: 1 mayúscula, 1 minúscula, 1 número y 1 carácter especial.', 'danger');
             return;
         }
-
+        
         datosActualizados.contrasena = inputContrasena.value;
     }
     
-    // Solo incluir selección si cambió
     if (selectSeleccion.value !== datosOriginales.seleccionFav) {
         datosActualizados.seleccionFav = selectSeleccion.value;
     }
     
-    // Solo incluir estadio si cambió
     if (selectEstadio.value !== datosOriginales.estadioFav) {
         datosActualizados.estadioFav = selectEstadio.value;
     }
     
-    // Mostrar icono de carga
     mostrarCargaGuardar(true);
     
     try {
-        // Actualizar usuario
         const resultado = await actualizarUsuario(datosActualizados);
         
-        // Actualizar datos en sessionStorage
         usuarioActual = resultado.usuario;
         sessionStorage.setItem('user', JSON.stringify(usuarioActual));
         
-        // Actualizar datos originales con los nuevos valores
         datosOriginales = {
             seleccionFav: resultado.usuario.seleccionFav || '',
             estadioFav: resultado.usuario.estadioFav || '',
             contrasena: ''
         };
         
-        // Mostrar mensaje de éxito
-        alert('¡Perfil actualizado exitosamente!');
+        mostrarAlerta('¡Perfil actualizado exitosamente!', 'success');
         
-        // Limpiar campo de contraseña
         inputContrasena.value = '';
-        
-        // Deshabilitar botón de guardar
         botonGuardar.disabled = true;
         
     } catch (error) {
         console.error('Error al actualizar perfil:', error);
-        alert(error.message || 'Error al actualizar el perfil. Por favor intenta nuevamente.');
+        mostrarAlerta(error.message || 'Error al actualizar el perfil. Por favor intenta nuevamente.', 'danger');
     } finally {
         mostrarCargaGuardar(false);
     }
 });
 
-// Evento para eliminar cuenta
-botonEliminar.addEventListener('click', async (e) => {
+// Modal de confirmación para eliminar cuenta
+const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+
+// Evento para mostrar modal de eliminar cuenta
+botonEliminar.addEventListener('click', (e) => {
     e.preventDefault();
-    
-    if (!confirm('¿Estás seguro que deseas eliminar tu cuenta? Esta acción no se puede deshacer.')) {
-        return;
-    }
-    
-    // Mostrar icono de carga
+    deleteModal.show();
+});
+
+// Evento para confirmar eliminación de cuenta
+confirmDeleteBtn.addEventListener('click', async () => {
+    deleteModal.hide();
     mostrarCargaEliminar(true);
     
     try {
-        // Eliminar usuario
         await eliminarUsuario();
         
-        // Mostrar mensaje de éxito
-        alert('Cuenta eliminada exitosamente.');
+        mostrarAlerta('Cuenta eliminada exitosamente. Redirigiendo...', 'success');
         
-        // Limpiar sessionStorage
         sessionStorage.removeItem('token');
         sessionStorage.removeItem('user');
         
-        // Redirigir al login
-        window.location.href = 'login.html';
+        setTimeout(() => {
+            window.location.href = 'login.html';
+        }, 2000);
         
     } catch (error) {
         console.error('Error al eliminar cuenta:', error);
-        alert(error.message || 'Error al eliminar la cuenta. Por favor intenta nuevamente.');
+        mostrarAlerta(error.message || 'Error al eliminar la cuenta. Por favor intenta nuevamente.', 'danger');
         mostrarCargaEliminar(false);
     }
 });
@@ -356,24 +367,24 @@ function mostrarSpinnerAvatar(mostrar) {
     }
 }
 
-// Función para mostrar/ocultar spinner de carga en botón guardar
+// Función para mostrar/ocultar spinner en botón guardar
 function mostrarCargaGuardar(cargando) {
     if (cargando) {
         botonGuardar.disabled = true;
-        botonGuardar.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Guardando...';
+        botonGuardar.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status"></span>Guardando...';
     } else {
         botonGuardar.innerHTML = 'Guardar Cambios';
     }
 }
 
-// Función para mostrar/ocultar spinner de carga en botón eliminar
+// Función para mostrar/ocultar spinner en botón eliminar
 function mostrarCargaEliminar(cargando) {
     if (cargando) {
         botonEliminar.disabled = true;
-        botonEliminar.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Eliminando...';
+        botonEliminar.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status"></span>Eliminando...';
     } else {
         botonEliminar.disabled = false;
-        botonEliminar.innerHTML = 'Darse de Baja';
+        botonEliminar.innerHTML = 'Eliminar Cuenta';
     }
 }
 
@@ -441,21 +452,8 @@ async function eliminarUsuario() {
     }
 }
 
-// Función para cerrar sesión
-const botonCerrarSesion = document.getElementById('logoutBtn');
-if (botonCerrarSesion) {
-    botonCerrarSesion.addEventListener('click', (e) => {
-        e.preventDefault();
-        
-        if (confirm('¿Estás seguro que deseas cerrar sesión?')) {
-            sessionStorage.removeItem('token');
-            sessionStorage.removeItem('user');
-            window.location.href = 'login.html';
-        }
-    });
-}
-
-function validarContrasena(contrasena) {
+// Función para validar contraseña
+function validarContrasenaRegex(contrasena) {
     const regexContrasena = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
     return regexContrasena.test(contrasena);
 }

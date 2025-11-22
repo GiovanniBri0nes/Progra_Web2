@@ -29,19 +29,21 @@
                             <p class="text-muted">Crea tu cuenta</p>
                         </div>
 
+                        <div id="alertContainer"></div>
+
                         <!-- Formulario de Registro -->
                         <form id="signupForm">
 
                             <!-- Email -->
                             <div class="mb-3">
                                 <label for="email" class="form-label">Correo electrónico</label>
-                                <input type="email" class="form-control" id="email" placeholder="usuario@ejemplo.com" required>
+                                <input type="email" class="form-control" id="email" placeholder="usuario@ejemplo.com" >
                             </div>
 
                             <!-- Contraseña -->
                             <div class="mb-3">
                                 <label for="password" class="form-label">Contraseña</label>
-                                <input type="password" class="form-control" id="password" placeholder="Mínimo 8 caracteres" required>
+                                <input type="password" class="form-control" id="password" placeholder="Mínimo 8 caracteres">
                                 <div class="form-text">
                                     Debe tener al menos: 8 caracteres, 1 minúscula, 1 mayúscula, 1 número y 1 carácter especial.
                                 </div>
@@ -50,14 +52,14 @@
                             <!-- Confirmar Contraseña -->
                             <div class="mb-3">
                                 <label for="confirmPassword" class="form-label">Confirmar contraseña</label>
-                                <input type="password" class="form-control" id="confirmPassword" placeholder="Repite tu contraseña" required>
+                                <input type="password" class="form-control" id="confirmPassword" placeholder="Repite tu contraseña" >
                             </div>
 
                             <!-- País/Región (opcional) -->
                                                  <!-- Selección Favorita -->
                                                  <div class="mb-3">
                                                     <label for="seleccion" class="form-label">Selección Favorita</label>
-                                                    <select class="form-select" id="seleccion" required>
+                                                    <select class="form-select" id="seleccion" >
                                                         <option value="">Selecciona tu selección</option>
                                                     </select>
                                                 </div>
@@ -65,7 +67,7 @@
                                                 <!-- Estadio Favorito -->
                                                 <div class="mb-3">
                                                     <label for="estadio" class="form-label">Estadio Favorito</label>
-                                                    <select class="form-select" id="estadio" required>
+                                                    <select class="form-select" id="estadio" >
                                                         <option value="">Selecciona tu estadio</option>
                                                     </select>
                                                 </div>

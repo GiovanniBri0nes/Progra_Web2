@@ -73,16 +73,16 @@ function mostrarMensajeBienvenida() {
     }
 }
 
-// Función para cerrar sesión
-const botonCerrarSesion = document.getElementById('logoutBtn');
-if (botonCerrarSesion) {
-    botonCerrarSesion.addEventListener('click', (e) => {
-        e.preventDefault();
-        
-        if (confirm('¿Estás seguro que deseas cerrar sesión?')) {
-            sessionStorage.removeItem('token');
-            sessionStorage.removeItem('user');
-            window.location.href = 'login.html';
-        }
-    });
-}
+// Función para cerrar sesión (YA SE MANEJA MEDIANTE logout.js)
+//const botonCerrarSesion = document.getElementById('logoutBtn');
+//if (botonCerrarSesion) {
+//    botonCerrarSesion.addEventListener('click', (e) => {
+//        e.preventDefault();
+//        
+//        if (confirm('¿Estás seguro que deseas cerrar sesión?')) {
+//            sessionStorage.removeItem('token');
+//            sessionStorage.removeItem('user');
+//            window.location.href = 'login.html';
+//        }
+//    });
+// }
