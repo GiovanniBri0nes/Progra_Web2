@@ -81,6 +81,10 @@ npm install
 cd backend
 Get-Content bd/Colecciones.js | mongosh
 ```
+*EN CASO DE QUE NO SE REGISTREN LOS ACENTOS EN LA BASE DE DATOS HACER LO SIGUIENTE:
+- Abrir Mongo Compass y abrir la shell directamente desde ahí
+- Copiar lo que contiene el archivo Colecciones.txt
+- 
 
 ### 4. Iniciar el backend
 ```bash
