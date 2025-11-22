@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
 
         // Buscar usuario por correo
         const usuario = await Usuario.findOne({ correo: correo });
-
+         
         if (!usuario) {
             return res.status(401).json({ mensaje: 'Credenciales incorrectas' });
         }
@@ -28,7 +28,7 @@ router.post('/', async (req, res) => {
         if (!contraseñaValida) {
             return res.status(401).json({ mensaje: 'Credenciales incorrectas' });
         }
-
+        
         // Generar token JWT
         const payload = {
             id: usuario._id,

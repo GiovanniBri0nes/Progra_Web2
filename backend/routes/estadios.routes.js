@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Estadio } = require('../bd/Modelos');
+const verificarToken = require('../middlewares/auth.middleware');
 
 // GET /estadios: obtener todos los estadios con nombre, pais, ciudad y capacidad
 router.get('/', async (req, res) => {

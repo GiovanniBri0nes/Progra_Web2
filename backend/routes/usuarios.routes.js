@@ -9,15 +9,17 @@ const verificarToken = require('../middlewares/auth.middleware');
 router.post('/', async (req, res) => {
     try {
         const { correo, contrasena, seleccionFav, estadioFav } = req.body;
-
+        
         // Validar que se envíen todos los datos requeridos
         if (!correo || !contrasena || !seleccionFav || !estadioFav) {
             // Código 400: petición incorrecta
             return res.status(400).json({ mensaje: 'Todos los campos son requeridos' }); 
         }
 
+        const correoLower = correo.toLowerCase();
+
         // Verificar si el correo ya existe
-        const usuarioExistente = await Usuario.findOne({ correo });
+        const usuarioExistente = await Usuario.findOne({ correo: correoLower });
         if (usuarioExistente) {
             return res.status(400).json({ mensaje: 'El correo es invalido' });
         }
@@ -31,7 +33,7 @@ router.post('/', async (req, res) => {
         const contraseñaHash = await bcrypt.hash(contrasena, 10);
 
         const nuevoUsuario = new Usuario({
-            correo,
+            correo: correoLower,
             contrasena: contraseñaHash,
             seleccionFav,
             estadioFav

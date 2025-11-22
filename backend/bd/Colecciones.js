@@ -17,16 +17,16 @@ db.confederaciones.insertOne({
       _id: ObjectId(),
       nombreSeleccion: "Argentina",
       jugadores: [
-        { _id: ObjectId(), nombreJugador: "Emiliano Martinez" },
+        { _id: ObjectId(), nombreJugador: "Emiliano Martínez" },
         { _id: ObjectId(), nombreJugador: "Cristian Romero" },
-        { _id: ObjectId(), nombreJugador: "Nicolas Otamendi" },
+        { _id: ObjectId(), nombreJugador: "Nicolás Otamendi" },
         { _id: ObjectId(), nombreJugador: "Nahuel Molina" },
-        { _id: ObjectId(), nombreJugador: "Angel Di Maria" },
+        { _id: ObjectId(), nombreJugador: "Ángel Di María" },
         { _id: ObjectId(), nombreJugador: "Rodrigo De Paul" },
-        { _id: ObjectId(), nombreJugador: "Enzo Fernandez" },
+        { _id: ObjectId(), nombreJugador: "Enzo Fernández" },
         { _id: ObjectId(), nombreJugador: "Lionel Messi" },
-        { _id: ObjectId(), nombreJugador: "Lautaro Martinez" },
-        { _id: ObjectId(), nombreJugador: "Julian Alvarez" },
+        { _id: ObjectId(), nombreJugador: "Lautaro Martínez" },
+        { _id: ObjectId(), nombreJugador: "Julián Alvarez" },
         { _id: ObjectId(), nombreJugador: "Alexis Mac Allister" }
       ]
     },
@@ -52,15 +52,15 @@ db.confederaciones.insertOne({
       nombreSeleccion: "Uruguay",
       jugadores: [
         { _id: ObjectId(), nombreJugador: "Sergio Rochet" },
-        { _id: ObjectId(), nombreJugador: "Jose Gimenez" },
+        { _id: ObjectId(), nombreJugador: "José Giménez" },
         { _id: ObjectId(), nombreJugador: "Ronald Araujo" },
-        { _id: ObjectId(), nombreJugador: "Mathias Olivera" },
+        { _id: ObjectId(), nombreJugador: "Mathías Olivera" },
         { _id: ObjectId(), nombreJugador: "Federico Valverde" },
         { _id: ObjectId(), nombreJugador: "Manuel Ugarte" },
         { _id: ObjectId(), nombreJugador: "Rodrigo Bentancur" },
         { _id: ObjectId(), nombreJugador: "Facundo Pellistri" },
-        { _id: ObjectId(), nombreJugador: "Darwin Nunez" },
-        { _id: ObjectId(), nombreJugador: "Luis Suarez" },
+        { _id: ObjectId(), nombreJugador: "Darwin Núñez" },
+        { _id: ObjectId(), nombreJugador: "Luis Suárez" },
         { _id: ObjectId(), nombreJugador: "Maximiliano Araujo" }
       ]
     },
@@ -69,13 +69,13 @@ db.confederaciones.insertOne({
       nombreSeleccion: "Colombia",
       jugadores: [
         { _id: ObjectId(), nombreJugador: "Camilo Vargas" },
-        { _id: ObjectId(), nombreJugador: "Davinson Sanchez" },
+        { _id: ObjectId(), nombreJugador: "Davinson Sánchez" },
         { _id: ObjectId(), nombreJugador: "Carlos Cuesta" },
-        { _id: ObjectId(), nombreJugador: "Daniel Munoz" },
+        { _id: ObjectId(), nombreJugador: "Daniel Muñoz" },
         { _id: ObjectId(), nombreJugador: "Jefferson Lerma" },
-        { _id: ObjectId(), nombreJugador: "Richard Rios" },
-        { _id: ObjectId(), nombreJugador: "James Rodriguez" },
-        { _id: ObjectId(), nombreJugador: "Luis Diaz" },
+        { _id: ObjectId(), nombreJugador: "Richard Ríos" },
+        { _id: ObjectId(), nombreJugador: "James Rodríguez" },
+        { _id: ObjectId(), nombreJugador: "Luis Díaz" },
         { _id: ObjectId(), nombreJugador: "Juan Cuadrado" },
         { _id: ObjectId(), nombreJugador: "Rafael Santos Borre" },
         { _id: ObjectId(), nombreJugador: "Jhon Duran" }
@@ -89,12 +89,12 @@ db.confederaciones.insertOne({
         { _id: ObjectId(), nombreJugador: "Piero Hincapie" },
         { _id: ObjectId(), nombreJugador: "Felix Torres" },
         { _id: ObjectId(), nombreJugador: "Pervis Estupinan" },
-        { _id: ObjectId(), nombreJugador: "Moises Caicedo" },
+        { _id: ObjectId(), nombreJugador: "Moisés Caicedo" },
         { _id: ObjectId(), nombreJugador: "Jeremy Sarmiento" },
-        { _id: ObjectId(), nombreJugador: "Kendry Paez" },
+        { _id: ObjectId(), nombreJugador: "Kendry Páez" },
         { _id: ObjectId(), nombreJugador: "Alan Franco" },
         { _id: ObjectId(), nombreJugador: "Enner Valencia" },
-        { _id: ObjectId(), nombreJugador: "Kevin Rodriguez" },
+        { _id: ObjectId(), nombreJugador: "Kevin Rodríguez" },
         { _id: ObjectId(), nombreJugador: "Gonzalo Plata" }
       ]
     },
@@ -104,15 +104,15 @@ db.confederaciones.insertOne({
       jugadores: [
         { _id: ObjectId(), nombreJugador: "Carlos Coronel" },
         { _id: ObjectId(), nombreJugador: "Gustavo Gomez" },
-        { _id: ObjectId(), nombreJugador: "Fabian Balbuena" },
+        { _id: ObjectId(), nombreJugador: "Fabián Balbuena" },
         { _id: ObjectId(), nombreJugador: "Junior Alonso" },
-        { _id: ObjectId(), nombreJugador: "Miguel Almiron" },
-        { _id: ObjectId(), nombreJugador: "Mathias Villasanti" },
-        { _id: ObjectId(), nombreJugador: "Richard Sanchez" },
-        { _id: ObjectId(), nombreJugador: "Angel Romero" },
+        { _id: ObjectId(), nombreJugador: "Miguel Almirón" },
+        { _id: ObjectId(), nombreJugador: "Mathías Villasanti" },
+        { _id: ObjectId(), nombreJugador: "Richard Sánchez" },
+        { _id: ObjectId(), nombreJugador: "Ángel Romero" },
         { _id: ObjectId(), nombreJugador: "Julio Enciso" },
         { _id: ObjectId(), nombreJugador: "Alex Arce" },
-        { _id: ObjectId(), nombreJugador: "Ramon Sosa" }
+        { _id: ObjectId(), nombreJugador: "Ramón Sosa" }
       ]
     }
   ]
@@ -124,19 +124,19 @@ db.confederaciones.insertOne({
   selecciones: [
     {
       _id: ObjectId(),
-      nombreSeleccion: "Mexico",
+      nombreSeleccion: "México",
       jugadores: [
         { _id: ObjectId(), nombreJugador: "Guillermo Ochoa" },
-        { _id: ObjectId(), nombreJugador: "Cesar Montes" },
-        { _id: ObjectId(), nombreJugador: "Johan Vasquez" },
-        { _id: ObjectId(), nombreJugador: "Jorge Sanchez" },
-        { _id: ObjectId(), nombreJugador: "Edson Alvarez" },
-        { _id: ObjectId(), nombreJugador: "Luis Chavez" },
+        { _id: ObjectId(), nombreJugador: "César Montes" },
+        { _id: ObjectId(), nombreJugador: "Johan Vásquez" },
+        { _id: ObjectId(), nombreJugador: "Jorge Sánchez" },
+        { _id: ObjectId(), nombreJugador: "Edson Álvarez" },
+        { _id: ObjectId(), nombreJugador: "Luis Chávez" },
         { _id: ObjectId(), nombreJugador: "Hector Herrera" },
         { _id: ObjectId(), nombreJugador: "Hirving Lozano" },
         { _id: ObjectId(), nombreJugador: "Alexis Vega" },
-        { _id: ObjectId(), nombreJugador: "Raul Jimenez" },
-        { _id: ObjectId(), nombreJugador: "Santiago Gimenez" }
+        { _id: ObjectId(), nombreJugador: "Raúl Jiménez" },
+        { _id: ObjectId(), nombreJugador: "Santiago Giménez" }
       ]
     },
     {
@@ -158,7 +158,7 @@ db.confederaciones.insertOne({
     },
     {
       _id: ObjectId(),
-      nombreSeleccion: "Canada",
+      nombreSeleccion: "Canadá",
       jugadores: [
         { _id: ObjectId(), nombreJugador: "Milan Borjan" },
         { _id: ObjectId(), nombreJugador: "Alistair Johnston" },
@@ -182,18 +182,18 @@ db.confederaciones.insertOne({
   selecciones: [
     {
       _id: ObjectId(),
-      nombreSeleccion: "Espana",
+      nombreSeleccion: "España",
       jugadores: [
-        { _id: ObjectId(), nombreJugador: "Unai Simon" },
+        { _id: ObjectId(), nombreJugador: "Unai Simón" },
         { _id: ObjectId(), nombreJugador: "Dani Carvajal" },
         { _id: ObjectId(), nombreJugador: "Aymeric Laporte" },
         { _id: ObjectId(), nombreJugador: "Pau Torres" },
         { _id: ObjectId(), nombreJugador: "Jordi Alba" },
-        { _id: ObjectId(), nombreJugador: "Rodri" },
-        { _id: ObjectId(), nombreJugador: "Gavi" },
-        { _id: ObjectId(), nombreJugador: "Pedri" },
+        { _id: ObjectId(), nombreJugador: "Rodrigo Hernández" },
+        { _id: ObjectId(), nombreJugador: "Pablo Gaviria" },
+        { _id: ObjectId(), nombreJugador: "Pedro González" },
         { _id: ObjectId(), nombreJugador: "Ferran Torres" },
-        { _id: ObjectId(), nombreJugador: "Alvaro Morata" },
+        { _id: ObjectId(), nombreJugador: "Álvaro Morata" },
         { _id: ObjectId(), nombreJugador: "Ansu Fati" }
       ]
     },
@@ -253,16 +253,16 @@ db.confederaciones.insertOne({
       nombreSeleccion: "Portugal",
       jugadores: [
         { _id: ObjectId(), nombreJugador: "Diogo Costa" },
-        { _id: ObjectId(), nombreJugador: "Joao Cancelo" },
+        { _id: ObjectId(), nombreJugador: "João Cancelo" },
         { _id: ObjectId(), nombreJugador: "Ruben Dias" },
-        { _id: ObjectId(), nombreJugador: "Pepe" },
+        { _id: ObjectId(), nombreJugador: "Pepe Lima" },
         { _id: ObjectId(), nombreJugador: "Nuno Mendes" },
-        { _id: ObjectId(), nombreJugador: "Joao Palhinha" },
+        { _id: ObjectId(), nombreJugador: "João Palhinha" },
         { _id: ObjectId(), nombreJugador: "Bruno Fernandes" },
         { _id: ObjectId(), nombreJugador: "Bernardo Silva" },
-        { _id: ObjectId(), nombreJugador: "Rafael Leao" },
+        { _id: ObjectId(), nombreJugador: "Rafael Leão" },
         { _id: ObjectId(), nombreJugador: "Cristiano Ronaldo" },
-        { _id: ObjectId(), nombreJugador: "Goncalo Ramos" }
+        { _id: ObjectId(), nombreJugador: "Gonçalo Ramos" }
       ]
     }
   ]
@@ -274,7 +274,7 @@ db.confederaciones.insertOne({
   selecciones: [
     {
       _id: ObjectId(),
-      nombreSeleccion: "Japon",
+      nombreSeleccion: "Japón",
       jugadores: [
         { _id: ObjectId(), nombreJugador: "Shuichi Gonda" },
         { _id: ObjectId(), nombreJugador: "Hiroki Sakai" },
@@ -308,7 +308,7 @@ db.confederaciones.insertOne({
     },
     {
       _id: ObjectId(),
-      nombreSeleccion: "Iran",
+      nombreSeleccion: "Irán",
       jugadores: [
         { _id: ObjectId(), nombreJugador: "Alireza Beiranvand" },
         { _id: ObjectId(), nombreJugador: "Sadegh Moharrami" },
@@ -383,7 +383,7 @@ db.confederaciones.insertOne({
     },
     {
       _id: ObjectId(),
-      nombreSeleccion: "Tunez",
+      nombreSeleccion: "Túnez",
       jugadores: [
         { _id: ObjectId(), nombreJugador: "Aymen Dahmen" },
         { _id: ObjectId(), nombreJugador: "Ali Maaloul" },
@@ -434,8 +434,8 @@ db.createCollection("estadios");
 db.estadios.insertMany([
   {
     nombreEstadio: "Estadio Azteca",
-    pais: "Mexico",
-    ciudad: "Ciudad de Mexico",
+    pais: "México",
+    ciudad: "Ciudad de México",
     capacidad: 83264,
     partidos: [
       { _id: ObjectId(), fecha: new Date("2026-06-11"), fase: "Grupos" },
@@ -447,7 +447,7 @@ db.estadios.insertMany([
   },
   {
     nombreEstadio: "Estadio Akron",
-    pais: "Mexico",
+    pais: "México",
     ciudad: "Guadalajara",
     capacidad: 46232,
     partidos: [
@@ -459,7 +459,7 @@ db.estadios.insertMany([
   },
   {
     nombreEstadio: "Estadio BBVA",
-    pais: "Mexico",
+    pais: "México",
     ciudad: "Monterrey",
     capacidad: 51348,
     partidos: [
@@ -543,7 +543,7 @@ db.estadios.insertMany([
 db.estadios.insertMany([
   {
     nombreEstadio: "BC Place",
-    pais: "Canada",
+    pais: "Canadá",
     ciudad: "Vancouver",
     capacidad: 54500,
     partidos: [
@@ -558,7 +558,7 @@ db.estadios.insertMany([
   },
   {
     nombreEstadio: "BMO Field",
-    pais: "Canada",
+    pais: "Canadá",
     ciudad: "Toronto",
     capacidad: 30000,
     partidos: [
