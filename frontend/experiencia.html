@@ -12,7 +12,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow">
         <div class="container-fluid">
             <a class="navbar-brand" href="dashboard.html">
-                <span class="fs-4">Mundial 2026</span>
+                <span class="fs-4">MundiAR 2026</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -35,7 +35,7 @@
         <div class="text-center">
             <h1 class="display-4 mb-4">Experiencia AR</h1>
             <p class="lead text-muted mb-5">Vive el Mundial 2026 en realidad aumentada</p>
-            <button class="btn btn-alt btn-lg" id="startARBtn">
+            <button class="btn btn-alt btn-lg" id="startARBtn" href="AR.html">
                 Iniciar Experiencia AR
             </button>
         </div>
@@ -43,6 +43,16 @@
 
     <script src="lib/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/dashboard.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('startARBtn');
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    window.location.href = 'AR.html';
+                });
+            }
+        });
+    </script>
 </body>
 </html>
 

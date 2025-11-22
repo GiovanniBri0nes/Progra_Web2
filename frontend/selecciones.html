@@ -12,7 +12,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow">
         <div class="container-fluid">
             <a class="navbar-brand" href="dashboard.html">
-                <span class="fs-4">Mundial 2026</span>
+                <span class="fs-4">MundiAR 2026</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -30,123 +30,28 @@
             </div>
         </div>
     </nav>
+
     <div class="container mt-5">
         <h1 class="display-4 mb-4 text-center">Selecciones</h1>
         <p class="lead text-center text-muted mb-5">Aquí verás todas las selecciones del Mundial 2026</p>
-        
-        <!-- Grid de Selecciones -->
-        <div class="row g-4">
-            <!-- Selección 1 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card team-card h-100">
-                    <div class="card-body">
-                        <h3 class="card-title mb-3">Argentina</h3>
-                        <div class="team-info">
-                            <p class="mb-2"><strong>Confederación:</strong> <span class="badge bg-primary">CONMEBOL</span></p>
-                            <p class="mb-2"><strong>Grupo:</strong> <span class="badge bg-secondary">Grupo A</span></p>
-                        </div>
-                        <hr>
-                        <div class="d-grid">
-                            <button class="btn btn-alt view-players-btn" data-team="Argentina">Ver Jugadores</button>
-                        </div>
-                    </div>
+           
+        <!-- Grid para selecciones, se llena dinamico con la BD-->
+         <div class="row g-4" id="seleccionesContainer">
+            <div class="text-center">
+                <div class="spinner-border text primary" role="status">
+                    <span class="visually-hidden">Cargando...</span>
                 </div>
             </div>
-
-            <!-- Selección 2 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card team-card h-100">
-                    <div class="card-body">
-                        <h3 class="card-title mb-3">Brasil</h3>
-                        <div class="team-info">
-                            <p class="mb-2"><strong>Confederación:</strong> <span class="badge bg-primary">CONMEBOL</span></p>
-                            <p class="mb-2"><strong>Grupo:</strong> <span class="badge bg-secondary">Grupo B</span></p>
-                        </div>
-                        <hr>
-                        <div class="d-grid">
-                            <button class="btn btn-alt view-players-btn" data-team="Brasil">Ver Jugadores</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Selección 3 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card team-card h-100">
-                    <div class="card-body">
-                        <h3 class="card-title mb-3">México</h3>
-                        <div class="team-info">
-                            <p class="mb-2"><strong>Confederación:</strong> <span class="badge bg-primary">CONCACAF</span></p>
-                            <p class="mb-2"><strong>Grupo:</strong> <span class="badge bg-secondary">Grupo C</span></p>
-                        </div>
-                        <hr>
-                        <div class="d-grid">
-                            <button class="btn btn-alt view-players-btn" data-team="México">Ver Jugadores</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Selección 4 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card team-card h-100">
-                    <div class="card-body">
-                        <h3 class="card-title mb-3">España</h3>
-                        <div class="team-info">
-                            <p class="mb-2"><strong>Confederación:</strong> <span class="badge bg-primary">UEFA</span></p>
-                            <p class="mb-2"><strong>Grupo:</strong> <span class="badge bg-secondary">Grupo D</span></p>
-                        </div>
-                        <hr>
-                        <div class="d-grid">
-                            <button class="btn btn-alt view-players-btn" data-team="España">Ver Jugadores</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Selección 5 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card team-card h-100">
-                    <div class="card-body">
-                        <h3 class="card-title mb-3">Alemania</h3>
-                        <div class="team-info">
-                            <p class="mb-2"><strong>Confederación:</strong> <span class="badge bg-primary">UEFA</span></p>
-                            <p class="mb-2"><strong>Grupo:</strong> <span class="badge bg-secondary">Grupo E</span></p>
-                        </div>
-                        <hr>
-                        <div class="d-grid">
-                            <button class="btn btn-alt view-players-btn" data-team="Alemania">Ver Jugadores</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Selección 6 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card team-card h-100">
-                    <div class="card-body">
-                        <h3 class="card-title mb-3">Francia</h3>
-                        <div class="team-info">
-                            <p class="mb-2"><strong>Confederación:</strong> <span class="badge bg-primary">UEFA</span></p>
-                            <p class="mb-2"><strong>Grupo:</strong> <span class="badge bg-secondary">Grupo F</span></p>
-                        </div>
-                        <hr>
-                        <div class="d-grid">
-                            <button class="btn btn-alt view-players-btn" data-team="Francia">Ver Jugadores</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+         </div>
     </div>
 
-    <!-- Modal para mostrar jugadores -->
-    <div class="modal fade" id="playersModal" tabindex="-1" aria-labelledby="playersModalLabel" aria-hidden="true">
+    <!-- Modal para mostrar a los jugadores de las selecciones-->
+     <div class="modal fade" id="playersModal" tabindex="-1" aria-labelledby="playersModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="playersModalLabel">Jugadores</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>   
                 </div>
                 <div class="modal-body">
                     <div id="playersListContainer"></div>
@@ -156,7 +61,8 @@
                 </div>
             </div>
         </div>
-    </div>
+     </div>
+
 
     <script src="lib/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/dashboard.js"></script>

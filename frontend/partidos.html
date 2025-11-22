@@ -12,7 +12,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow">
         <div class="container-fluid">
             <a class="navbar-brand" href="dashboard.html">
-                <span class="fs-4">Mundial 2026</span>
+                <span class="fs-4">MundiAR 2026</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -35,107 +35,11 @@
         <h1 class="display-4 mb-4 text-center">Partidos</h1>
         <p class="lead text-center text-muted mb-5">Calendario y resultados de los partidos</p>
         
-        <!-- Grid de Partidos -->
-        <div class="row g-4">
-            <!-- Partido 1 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card match-card h-100">
-                    <div class="card-body">
-                        <div class="match-teams mb-3">
-                            <h4 class="text-center mb-0">Argentina vs México</h4>
-                        </div>
-                        <div class="match-info">
-                            <p class="mb-2"><strong>Fase:</strong> <span class="badge bg-success">Grupos</span></p>
-                            <p class="mb-2"><strong>Fecha:</strong> 15 de Junio, 2026 - 18:00</p>
-                            <p class="mb-2"><strong>Estadio:</strong> Estadio Azteca</p>
-                        </div>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Partido 2 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card match-card h-100">
-                    <div class="card-body">
-                        <div class="match-teams mb-3">
-                            <h4 class="text-center mb-0">Brasil vs España</h4>
-                        </div>
-                        <div class="match-info">
-                            <p class="mb-2"><strong>Fase:</strong> <span class="badge bg-success">Grupos</span></p>
-                            <p class="mb-2"><strong>Fecha:</strong> 16 de Junio, 2026 - 20:00</p>
-                            <p class="mb-2"><strong>Estadio:</strong> MetLife Stadium</p>
-                        </div>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Partido 3 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card match-card h-100">
-                    <div class="card-body">
-                        <div class="match-teams mb-3">
-                            <h4 class="text-center mb-0">Francia vs Alemania</h4>
-                        </div>
-                        <div class="match-info">
-                            <p class="mb-2"><strong>Fase:</strong> <span class="badge bg-warning text-dark">Eliminatorias</span></p>
-                            <p class="mb-2"><strong>Fecha:</strong> 2 de Julio, 2026 - 16:00</p>
-                            <p class="mb-2"><strong>Estadio:</strong> SoFi Stadium</p>
-                        </div>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Partido 4 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card match-card h-100">
-                    <div class="card-body">
-                        <div class="match-teams mb-3">
-                            <h4 class="text-center mb-0">Uruguay vs Colombia</h4>
-                        </div>
-                        <div class="match-info">
-                            <p class="mb-2"><strong>Fase:</strong> <span class="badge bg-warning text-dark">Eliminatorias</span></p>
-                            <p class="mb-2"><strong>Fecha:</strong> 3 de Julio, 2026 - 19:00</p>
-                            <p class="mb-2"><strong>Estadio:</strong> AT&T Stadium</p>
-                        </div>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Partido 5 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card match-card h-100">
-                    <div class="card-body">
-                        <div class="match-teams mb-3">
-                            <h4 class="text-center mb-0">Portugal vs Inglaterra</h4>
-                        </div>
-                        <div class="match-info">
-                            <p class="mb-2"><strong>Fase:</strong> <span class="badge bg-warning text-dark">Eliminatorias</span></p>
-                            <p class="mb-2"><strong>Fecha:</strong> 6 de Julio, 2026 - 17:00</p>
-                            <p class="mb-2"><strong>Estadio:</strong> Mercedes-Benz Stadium</p>
-                        </div>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Partido 6 (Final) -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card match-card h-100 final-match">
-                    <div class="card-body">
-                        <div class="match-teams mb-3">
-                            <h4 class="text-center mb-0">🏆 Gran Final</h4>
-                        </div>
-                        <div class="match-info">
-                            <p class="mb-2"><strong>Fase:</strong> <span class="badge bg-danger">Final</span></p>
-                            <p class="mb-2"><strong>Fecha:</strong> 19 de Julio, 2026 - 15:00</p>
-                            <p class="mb-2"><strong>Estadio:</strong> MetLife Stadium</p>
-                        </div>
-                        <hr>
-                    </div>
+        <!-- Grid de Partidos, se llena dinamicamente con la BD -->
+        <div class="row g-4" id="partidosContainer">
+            <div class="text-center">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Cargando...</span>
                 </div>
             </div>
         </div>
@@ -143,7 +47,6 @@
 
     <script src="lib/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/dashboard.js"></script>
+    <script src="js/partidos.js"></script>
 </body>
 </html>
-
-

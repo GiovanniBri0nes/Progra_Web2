@@ -259,6 +259,11 @@ botonGuardar.addEventListener('click', async (e) => {
             alert('La contraseña debe tener al menos 8 caracteres');
             return;
         }
+        // Validar complejidad de contraseña
+        if (!validarContrasena(inputContrasena.value)) {
+            alert('La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial');
+            return;
+        }
 
         datosActualizados.contrasena = inputContrasena.value;
     }
@@ -448,4 +453,9 @@ if (botonCerrarSesion) {
             window.location.href = 'login.html';
         }
     });
+}
+
+function validarContrasena(contrasena) {
+    const regexContrasena = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+    return regexContrasena.test(contrasena);
 }

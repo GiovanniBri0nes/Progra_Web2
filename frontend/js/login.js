@@ -37,7 +37,7 @@ formularioLogin.addEventListener('submit', async (e) => {
     
     // Preparar datos del usuario
     const datosLogin = {
-        correo: inputCorreo.value.trim(),
+        correo: inputCorreo.value.trim().toLowerCase(),
         contrasena: inputContrasena.value
     };
     
@@ -51,6 +51,7 @@ formularioLogin.addEventListener('submit', async (e) => {
         // Guardar token y datos del usuario en sessionStorage
         sessionStorage.setItem('token', resultado.token);
         sessionStorage.setItem('user', JSON.stringify(resultado.usuario));
+    
 
         // Redirigir al dashboard
         window.location.href = 'dashboard.html';
@@ -78,7 +79,7 @@ function mostrarCarga(cargando) {
 
 // Función para validar el formulario
 function validarFormulario() {
-    const correo = inputCorreo.value.trim();
+    const correo = inputCorreo.value.trim().toLowerCase();
     const contrasena = inputContrasena.value;
     
     // Validar que ambos campos no estén vacíos

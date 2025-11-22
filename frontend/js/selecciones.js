@@ -1,128 +1,118 @@
-// Base de datos de jugadores por selección
-const playersData = {
-    "Argentina": [
-        { nombre: "Emiliano Martínez", posicion: "Portero", numero: 23 },
-        { nombre: "Lionel Messi", posicion: "Delantero", numero: 10 },
-        { nombre: "Ángel Di María", posicion: "Centrocampista", numero: 11 },
-        { nombre: "Lautaro Martínez", posicion: "Delantero", numero: 22 },
-        { nombre: "Rodrigo De Paul", posicion: "Centrocampista", numero: 7 },
-        { nombre: "Cristian Romero", posicion: "Defensa", numero: 13 },
-        { nombre: "Nicolás Otamendi", posicion: "Defensa", numero: 19 },
-        { nombre: "Julián Álvarez", posicion: "Delantero", numero: 9 },
-        { nombre: "Leandro Paredes", posicion: "Centrocampista", numero: 5 },
-        { nombre: "Enzo Fernández", posicion: "Centrocampista", numero: 24 },
-        { nombre: "Alexis Mac Allister", posicion: "Centrocampista", numero: 20 }
-    ],
-    "Brasil": [
-        { nombre: "Alisson Becker", posicion: "Portero", numero: 1 },
-        { nombre: "Neymar Jr", posicion: "Delantero", numero: 10 },
-        { nombre: "Vinícius Jr", posicion: "Delantero", numero: 20 },
-        { nombre: "Casemiro", posicion: "Centrocampista", numero: 5 },
-        { nombre: "Marquinhos", posicion: "Defensa", numero: 4 },
-        { nombre: "Thiago Silva", posicion: "Defensa", numero: 3 },
-        { nombre: "Raphinha", posicion: "Centrocampista", numero: 19 },
-        { nombre: "Richarlison", posicion: "Delantero", numero: 9 },
-        { nombre: "Lucas Paquetá", posicion: "Centrocampista", numero: 8 },
-        { nombre: "Éder Militão", posicion: "Defensa", numero: 14 },
-        { nombre: "Rodrygo", posicion: "Delantero", numero: 21 }
-    ],
-    "México": [
-        { nombre: "Guillermo Ochoa", posicion: "Portero", numero: 13 },
-        { nombre: "Hirving Lozano", posicion: "Delantero", numero: 11 },
-        { nombre: "Raúl Jiménez", posicion: "Delantero", numero: 9 },
-        { nombre: "Héctor Herrera", posicion: "Centrocampista", numero: 16 },
-        { nombre: "Jesús Corona", posicion: "Defensa", numero: 2 },
-        { nombre: "Edson Álvarez", posicion: "Centrocampista", numero: 4 },
-        { nombre: "César Montes", posicion: "Defensa", numero: 3 },
-        { nombre: "Alexis Vega", posicion: "Delantero", numero: 10 },
-        { nombre: "Luis Romo", posicion: "Centrocampista", numero: 7 },
-        { nombre: "Johan Vásquez", posicion: "Defensa", numero: 5 },
-        { nombre: "Santiago Giménez", posicion: "Delantero", numero: 19 }
-    ],
-    "España": [
-        { nombre: "Unai Simón", posicion: "Portero", numero: 23 },
-        { nombre: "Pedri", posicion: "Centrocampista", numero: 26 },
-        { nombre: "Gavi", posicion: "Centrocampista", numero: 9 },
-        { nombre: "Álvaro Morata", posicion: "Delantero", numero: 7 },
-        { nombre: "Sergio Busquets", posicion: "Centrocampista", numero: 5 },
-        { nombre: "Dani Carvajal", posicion: "Defensa", numero: 2 },
-        { nombre: "Aymeric Laporte", posicion: "Defensa", numero: 24 },
-        { nombre: "Ferran Torres", posicion: "Delantero", numero: 11 },
-        { nombre: "Rodri", posicion: "Centrocampista", numero: 16 },
-        { nombre: "Ansu Fati", posicion: "Delantero", numero: 10 },
-        { nombre: "Pau Torres", posicion: "Defensa", numero: 4 }
-    ],
-    "Alemania": [
-        { nombre: "Manuel Neuer", posicion: "Portero", numero: 1 },
-        { nombre: "Thomas Müller", posicion: "Delantero", numero: 25 },
-        { nombre: "Joshua Kimmich", posicion: "Centrocampista", numero: 6 },
-        { nombre: "Serge Gnabry", posicion: "Delantero", numero: 10 },
-        { nombre: "Leroy Sané", posicion: "Delantero", numero: 19 },
-        { nombre: "Antonio Rüdiger", posicion: "Defensa", numero: 2 },
-        { nombre: "İlkay Gündoğan", posicion: "Centrocampista", numero: 21 },
-        { nombre: "Kai Havertz", posicion: "Delantero", numero: 7 },
-        { nombre: "Niklas Süle", posicion: "Defensa", numero: 15 },
-        { nombre: "Jamal Musiala", posicion: "Centrocampista", numero: 14 },
-        { nombre: "Leon Goretzka", posicion: "Centrocampista", numero: 8 }
-    ],
-    "Francia": [
-        { nombre: "Hugo Lloris", posicion: "Portero", numero: 1 },
-        { nombre: "Kylian Mbappé", posicion: "Delantero", numero: 10 },
-        { nombre: "Antoine Griezmann", posicion: "Delantero", numero: 7 },
-        { nombre: "Paul Pogba", posicion: "Centrocampista", numero: 6 },
-        { nombre: "N'Golo Kanté", posicion: "Centrocampista", numero: 13 },
-        { nombre: "Raphaël Varane", posicion: "Defensa", numero: 4 },
-        { nombre: "Karim Benzema", posicion: "Delantero", numero: 19 },
-        { nombre: "Aurélien Tchouaméni", posicion: "Centrocampista", numero: 8 },
-        { nombre: "Theo Hernández", posicion: "Defensa", numero: 22 },
-        { nombre: "Ousmane Dembélé", posicion: "Delantero", numero: 11 },
-        { nombre: "Jules Koundé", posicion: "Defensa", numero: 5 }
-    ]
-};
-
-// Event listeners para los botones de Ver Jugadores
-document.addEventListener('DOMContentLoaded', function() {
-    const viewPlayersButtons = document.querySelectorAll('.view-players-btn');
-    const playersModal = new bootstrap.Modal(document.getElementById('playersModal'));
-    
-    viewPlayersButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const teamName = this.getAttribute('data-team');
-            showPlayers(teamName, playersModal);
-        });
-    });
+document.addEventListener('DOMContentLoaded',()=>{
+    cargarSelecciones();
 });
 
-// Función para mostrar jugadores en el modal
-function showPlayers(teamName, modal) {
-    const players = playersData[teamName];
-    const modalTitle = document.getElementById('playersModalLabel');
-    const playersContainer = document.getElementById('playersListContainer');
-    
-    // Actualizar título del modal
-    modalTitle.textContent = `Jugadores de ${teamName}`;
-    
-    if (players && players.length > 0) {
-        // Crear lista de jugadores con estilo de tabla
-        let html = '<div class="table-responsive"><table class="table table-hover align-middle text-center">';
-        html += '<thead><tr><th class="text-center">Nombre</th></tr></thead>';
-        html += '<tbody>';
-        
-        players.forEach(player => {
-            html += `
-                <tr>
-                    <td><strong>${player.nombre}</strong></td>
-                </tr>
-            `;
+// Función para cargar las selecciones desde la API
+async function cargarSelecciones(){
+    try{
+        const token = sessionStorage.getItem('token');
+        const respuesta = await fetch(`${URL_API}/api/selecciones`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
         });
-        
-        html += '</tbody></table></div>';
-        playersContainer.innerHTML = html;
-    } else {
-        playersContainer.innerHTML = '<p class="text-center text-muted">No hay información de jugadores disponible.</p>';
+
+        if(!respuesta.ok){
+            throw new Error('Error al cargar las selecciones');
+        }
+
+        const selecciones = await respuesta.json();
+
+        selecciones.sort((a, b) => a.nombreSeleccion.localeCompare(b.nombreSeleccion));
+
+        mostrarSelecciones(selecciones);
+    } catch(error){
+        console.error('Error:', error);
+        document.getElementById('seleccionesContainer').innerHTML = '<p class="text-center text-danger">Error al cargar las selecciones.</p>';
     }
-    
-    // Mostrar el modal
-    modal.show();
 }
 
+// Función para mostrar las selecciones
+function mostrarSelecciones(selecciones){
+    const container = document.getElementById('seleccionesContainer');
+
+    if(selecciones.length === 0){
+        container.innerHTML = '<p class="text-center">No hay selecciones disponibles.</p>';
+        return;
+    }
+
+    container.innerHTML= selecciones.map(seleccion => `
+        <div class="col-md-6 col-lg-4">
+            <div class="card team-card h-100">
+                <div class="card-body">
+                    <h3 class="card-title mb-3">${seleccion.nombreSeleccion}</h3>
+                    <div class="team-info mb-3">
+                        <p class="mb-2"><strong>Confederación:</strong> ${seleccion.confederacion}</p>
+                    </div>
+                    <hr>
+                    <div class="d-grid">
+                        <button class="btn btn-alt view-players-btn" data-team="${seleccion.nombreSeleccion}">Ver Jugadores</button>
+                    </div>
+                </div>
+            </div>
+        </div>`).join('');
+
+    // Agregar los eventos a los botones de ver jugadores
+    document.querySelectorAll('.view-players-btn').forEach(boton =>{
+        boton.addEventListener('click', ()=>{
+            const nombreSeleccion = boton.getAttribute('data-team');
+            cargarJugadores(nombreSeleccion);
+        });
+    });
+}
+
+// Función para cargar los jugadores 
+async function cargarJugadores(nombreSeleccion){
+    try{
+        const token = sessionStorage.getItem('token');
+        const container = document.getElementById('playersListContainer');
+
+        // Mostrar loading en el modal
+        document.getElementById('playersModalLabel').textContent = `Jugadores de ${nombreSeleccion}`;
+        container.innerHTML = `
+            <div class="text-center">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Cargando...</span>
+                </div>
+            </div>
+        `;
+
+        // Abrir el modal mientras se cargan los datos
+        const modal = new bootstrap.Modal(document.getElementById('playersModal'));
+        modal.show();
+
+        const respuesta = await fetch(`${URL_API}/api/selecciones/${encodeURIComponent(nombreSeleccion)}/jugadores`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if(!respuesta.ok){
+            throw new Error('Error al cargar los jugadores');
+        }
+
+        const jugadores = await respuesta.json();
+        mostrarJugadoresEnModal(jugadores);
+    } catch(error){
+        console.error('Error:', error);
+        document.getElementById('playersListContainer').innerHTML = '<p class="text-danger">Error al cargar los jugadores.</p>';
+    }
+}
+
+// Función para mostrar los jugadores en el modal
+function mostrarJugadoresEnModal(jugadores){
+    const container = document.getElementById('playersListContainer');
+
+    if(jugadores.length === 0){
+        container.innerHTML = '<p class="text-muted">No hay jugadores disponibles para esta selección.</p>';
+        return;
+    }
+
+    container.innerHTML = `
+        <ul class="list-group">
+            ${jugadores.map(jugador => `
+                <li class="list-group-item">${jugador.nombreJugador}</li>
+            `).join('')}
+        </ul>
+    `;
+}

@@ -29,7 +29,7 @@ formularioRegistro.addEventListener('submit', async (e) => {
     
     // Preparar datos del usuario
     const datosUsuario = {
-        correo: inputCorreo.value.trim(),
+        correo: inputCorreo.value.trim().toLowerCase(),
         contrasena: inputContrasena.value,
         seleccionFav: selectSeleccion.value,
         estadioFav: selectEstadio.value
@@ -156,10 +156,17 @@ async function cargarEstadios() {
 
 // Función para validar el formulario
 function validarFormulario() {
+    const correo = inputCorreo.value.trim();
     const contrasena = inputContrasena.value;
     const confirmarContrasena = inputConfirmarContrasena.value;
     const seleccion = selectSeleccion.value;
     const estadio = selectEstadio.value;
+
+    // Validar formato de correo
+    if (!validarCorreo(correo)) {
+        alert('Por favor ingresa un correo electrónico válido');
+        return false;
+    }
     
     // Validar que la selección no esté vacía
     if (!seleccion) {
@@ -176,6 +183,12 @@ function validarFormulario() {
     // Validar longitud de contraseña
     if (contrasena.length < 8) {
         alert('La contraseña debe tener al menos 8 caracteres');
+        return false;
+    }
+
+    // Validar complejidad de contraseña
+    if (!validarContrasena(contrasena)) {
+        alert('La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial');
         return false;
     }
     
@@ -210,4 +223,15 @@ async function registrarUsuario(datosUsuario) {
     } catch (error) {
         throw error;
     }
+}
+
+// Función para validar formato de correo electrónico
+function validarCorreo(correo) {
+    const regexCorreo = /^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regexCorreo.test(correo);
+}
+
+function validarContrasena(contrasena) {
+    const regexContrasena = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+    return regexContrasena.test(contrasena);
 }
