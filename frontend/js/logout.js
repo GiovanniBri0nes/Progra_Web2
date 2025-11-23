@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>¿Estás seguro que deseas cerrar sesión?</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         <button type="button" class="btn btn-warning" id="confirmLogoutBtn">Sí, cerrar sesión</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     </div>
                 </div>
             </div>

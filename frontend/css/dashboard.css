@@ -11,6 +11,7 @@ body {
     background-attachment: fixed;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
+    padding-top: 70px;
 }
 
 /* Main content - toma todo el espacio disponible */
@@ -185,11 +186,6 @@ body {
     transition: transform 0.3s, box-shadow 0.3s;
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(10px);
-}
-
-.team-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .team-card .card-title {
